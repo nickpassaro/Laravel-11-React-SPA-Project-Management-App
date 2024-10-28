@@ -1,7 +1,7 @@
 import InputError from '@/Components/InputError';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
-import GuestLayout from '@/Layouts/GuestLayout';
+import AuthFormLayout from '@/Layouts/AuthFormLayout';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { FormEventHandler } from 'react';
 
@@ -17,7 +17,7 @@ export default function ForgotPassword({ status }: { status?: string }) {
     };
 
     return (
-        <GuestLayout>
+        <AuthFormLayout>
             <Head title="Forgot Password" />
 
             <div className="mb-4 text-sm text-gray-600 dark:text-gray-400">
@@ -62,6 +62,6 @@ export default function ForgotPassword({ status }: { status?: string }) {
                     <span className="text-sm text-gray-60 dark:text-gray-400">&nbsp;to log in.</span>
                 </div>
             </form>
-        </GuestLayout>
+        </AuthFormLayout>
     );
 }
