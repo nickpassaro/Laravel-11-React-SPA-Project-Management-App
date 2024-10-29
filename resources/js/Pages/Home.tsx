@@ -1,11 +1,14 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import GuestLayout from "@/Layouts/GuestLayout";
-import { usePage } from "@inertiajs/react";
+import { Head, usePage } from "@inertiajs/react";
 
 const children = () => {
     return (
-        <h1>Hello World!</h1>
-    )
+        <>
+            <Head title="Home" />
+            <h1>Hello World!</h1>
+        </>
+    );
 };
 
 export default function Home() {
