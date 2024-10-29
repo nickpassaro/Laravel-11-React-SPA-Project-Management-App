@@ -30,7 +30,7 @@ export default function GuestNavBar() {
 
                     <div className="hidden sm:flex sm:items-center">
                         <NavLink href="/login" active={false}>
-                            Log In
+                            Log in
                         </NavLink>
                     </div>
 
@@ -87,6 +87,9 @@ export default function GuestNavBar() {
                 <div className="space-y-1">
                     <ResponsiveNavLink href={route("home")}>
                         Home
+                    </ResponsiveNavLink>
+                    <ResponsiveNavLink href={route("login")}>
+                        Log in
                     </ResponsiveNavLink>
                 </div>
             </div>
