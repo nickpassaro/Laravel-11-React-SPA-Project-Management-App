@@ -1,11 +1,11 @@
 import ApplicationLogo from "@/Components/ApplicationLogo";
 import Dropdown from "@/Components/Dropdown";
-import NavLink from "@/Components/NavLink";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link, usePage } from "@inertiajs/react";
 import { useState } from "react";
+import NavLink from "./NavLink";
 
-export default function NavBar() {
+export default function AuthNavBar() {
     const user = usePage().props.auth.user;
 
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
@@ -17,10 +17,17 @@ export default function NavBar() {
                 <div className="flex h-16 justify-between">
                     {/* Logo and non-auth nav stuff */}
                     <div className="flex">
-                        <div className="flex shrink-0 items-center">
-                            <Link href="/">
+                        <div className="flex shrink-0 items-center space-x-4">
+                            <Link href={route("home")}>
                                 <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                             </Link>
+                            <NavLink
+                                href={route("home")}
+                                active={route().current("Home")}
+                                className="hidden sm:inline-flex"
+                            >
+                                Home
+                            </NavLink>
                         </div>
                     </div>
 
@@ -133,6 +140,9 @@ export default function NavBar() {
                     </div>
 
                     <div className="mt-3 space-y-1">
+                        <ResponsiveNavLink href={route("home")}>
+                            Home
+                        </ResponsiveNavLink>
                         <ResponsiveNavLink href={route("dashboard")}>
                             Dashboard
                         </ResponsiveNavLink>

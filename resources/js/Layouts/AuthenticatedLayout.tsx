@@ -1,4 +1,4 @@
-import NavBar from "@/Components/NavBar";
+import AuthNavBar from "@/Components/AuthNavBar";
 import { PropsWithChildren, ReactNode } from "react";
 
 export default function Authenticated({
@@ -7,7 +7,7 @@ export default function Authenticated({
 }: PropsWithChildren<{ header?: ReactNode }>) {
     return (
         <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
-            <NavBar />
+            <AuthNavBar />
 
             {header && (
                 <header className="bg-white shadow dark:bg-gray-800">
