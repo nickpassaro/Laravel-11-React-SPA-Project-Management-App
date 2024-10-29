@@ -15,6 +15,7 @@ export default function NavBar() {
         <nav className="border-b border-gray-100 bg-white dark:border-gray-700 dark:bg-gray-800">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 justify-between">
+                    {/* Logo and non-auth nav stuff */}
                     <div className="flex">
                         <div className="flex shrink-0 items-center">
                             <Link href="/">
@@ -23,6 +24,7 @@ export default function NavBar() {
                         </div>
                     </div>
 
+                    {/* Desktop auth-only nav stuff */}
                     <div className="hidden sm:ms-6 sm:flex sm:items-center">
                         <div className="relative ms-3">
                             <Dropdown>
@@ -69,6 +71,7 @@ export default function NavBar() {
                         </div>
                     </div>
 
+                    {/* Mobile hamburger button */}
                     <div className="-me-2 flex items-center sm:hidden">
                         <button
                             onClick={() =>
@@ -112,6 +115,7 @@ export default function NavBar() {
                 </div>
             </div>
 
+            {/* Mobile auth-only nav stuff */}
             <div
                 className={
                     (showingNavigationDropdown ? "block" : "hidden") +
