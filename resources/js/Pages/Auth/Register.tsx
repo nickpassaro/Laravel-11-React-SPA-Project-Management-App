@@ -44,7 +44,7 @@ export default function Register() {
                     <InputError message={errors.first_name} className="mt-2" />
                 </div>
 
-                <div>
+                <div className="mt-4">
                     <InputLabel htmlFor="last_name" value="Last Name" />
 
                     <TextInput
