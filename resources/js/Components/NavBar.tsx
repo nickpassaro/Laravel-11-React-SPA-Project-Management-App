@@ -21,15 +21,6 @@ export default function NavBar() {
                                 <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                             </Link>
                         </div>
-
-                        <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                            <NavLink
-                                href={route("dashboard")}
-                                active={route().current("dashboard")}
-                            >
-                                Dashboard
-                            </NavLink>
-                        </div>
                     </div>
 
                     <div className="hidden sm:ms-6 sm:flex sm:items-center">
@@ -60,6 +51,9 @@ export default function NavBar() {
                                 </Dropdown.Trigger>
 
                                 <Dropdown.Content>
+                                    <Dropdown.Link href={route("dashboard")}>
+                                        Dashboard
+                                    </Dropdown.Link>
                                     <Dropdown.Link href={route("profile.edit")}>
                                         Profile
                                     </Dropdown.Link>
@@ -124,15 +118,6 @@ export default function NavBar() {
                     " sm:hidden"
                 }
             >
-                <div className="space-y-1 pb-3 pt-2">
-                    <ResponsiveNavLink
-                        href={route("dashboard")}
-                        active={route().current("dashboard")}
-                    >
-                        Dashboard
-                    </ResponsiveNavLink>
-                </div>
-
                 <div className="border-t border-gray-200 pb-1 pt-4 dark:border-gray-600">
                     <div className="px-4">
                         <div className="text-base font-medium text-gray-800 dark:text-gray-200">
@@ -144,6 +129,9 @@ export default function NavBar() {
                     </div>
 
                     <div className="mt-3 space-y-1">
+                        <ResponsiveNavLink href={route("dashboard")}>
+                            Dashboard
+                        </ResponsiveNavLink>
                         <ResponsiveNavLink href={route("profile.edit")}>
                             Profile
                         </ResponsiveNavLink>
