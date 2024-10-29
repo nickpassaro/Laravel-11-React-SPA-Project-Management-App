@@ -4,6 +4,7 @@ import { Head } from "@inertiajs/react";
 import DeleteUserForm from "./Partials/DeleteUserForm";
 import UpdatePasswordForm from "./Partials/UpdatePasswordForm";
 import UpdateProfileInformationForm from "./Partials/UpdateProfileInformationForm";
+import PageSectionCard from "@/Components/PageSectionCard";
 
 export default function Edit({
     mustVerifyEmail,
@@ -13,21 +14,21 @@ export default function Edit({
         <AuthenticatedLayout header="Profile">
             <Head title="Profile" />
 
-            <div className="bg-white p-4 shadow sm:rounded-lg sm:p-8 dark:bg-gray-800">
+            <PageSectionCard>
                 <UpdateProfileInformationForm
                     mustVerifyEmail={mustVerifyEmail}
                     status={status}
                     className="max-w-xl"
                 />
-            </div>
+            </PageSectionCard>
 
-            <div className="bg-white p-4 shadow sm:rounded-lg sm:p-8 dark:bg-gray-800">
+            <PageSectionCard>
                 <UpdatePasswordForm className="max-w-xl" />
-            </div>
+            </PageSectionCard>
 
-            <div className="bg-white p-4 shadow sm:rounded-lg sm:p-8 dark:bg-gray-800">
+            <PageSectionCard>
                 <DeleteUserForm className="max-w-xl" />
-            </div>
+            </PageSectionCard>
         </AuthenticatedLayout>
     );
 }
