@@ -20,7 +20,7 @@ export default function GuestNavBar() {
                             </Link>
                             <NavLink
                                 href={route("home")}
-                                active={route().current("Home")}
+                                active={route().current("home")}
                                 className="hidden sm:inline-flex"
                             >
                                 Home
