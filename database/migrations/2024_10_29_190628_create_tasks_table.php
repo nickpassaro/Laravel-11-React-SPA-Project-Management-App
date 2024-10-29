@@ -22,8 +22,6 @@ return new class extends Migration
             $table->foreignId('assigned_user_id')->constrained('users');
             $table->foreignId('created_by')->constrained('users');
             $table->foreignId('updated_by')->constrained('users');
-            $table->time('created_at')->useCurrent();
-            $table->time('updated_at')->useCurrent();
             $table->foreignId('project_id')->constrained('projects');
             $table->timestamps();
         });
