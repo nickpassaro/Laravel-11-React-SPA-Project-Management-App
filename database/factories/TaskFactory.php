@@ -23,8 +23,8 @@ class TaskFactory extends Factory
             'status' => fake()->randomElement(['pending', 'in progress', 'completed']),
             'priority' => fake()->randomElement(['low', 'medium', 'high', 'urgent']),
             'image_path' => fake()->imageUrl(),
-            'assigned_user_id' => 1,
             'created_by' => 1,
+            'assigned_to' => 1,
             'updated_by' => 1,
             'project_id' => 1,
         ];
