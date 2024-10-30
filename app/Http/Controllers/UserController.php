@@ -13,7 +13,7 @@ class UserController extends Controller
     public function index()
     {
         $query = User::query();
-        $users = $query->paginate(10)->onEachPage(1);
+        $users = $query->paginate(10)->onEachSize(1);
         return inertia('User/Index', [
             'users' => $users,
         ]);
