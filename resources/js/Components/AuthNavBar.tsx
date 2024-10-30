@@ -28,6 +28,42 @@ export default function AuthNavBar() {
                             >
                                 Home
                             </NavLink>
+                            <NavLink
+                                href={route("projects.index")}
+                                active={
+                                    route().current("projects.index") ||
+                                    route().current("projects.show") ||
+                                    route().current("projects.create") ||
+                                    route().current("projects.edit")
+                                }
+                                className="hidden sm:inline-flex"
+                            >
+                                Projects
+                            </NavLink>
+                            <NavLink
+                                href={route("tasks.index")}
+                                active={
+                                    route().current("tasks.index") ||
+                                    route().current("tasks.show") ||
+                                    route().current("tasks.create") ||
+                                    route().current("tasks.edit")
+                                }
+                                className="hidden sm:inline-flex"
+                            >
+                                Tasks
+                            </NavLink>
+                            <NavLink
+                                href={route("users.index")}
+                                active={
+                                    route().current("users.index") ||
+                                    route().current("users.show") ||
+                                    route().current("users.create") ||
+                                    route().current("users.edit")
+                                }
+                                className="hidden sm:inline-flex"
+                            >
+                                Users
+                            </NavLink>
                         </div>
                     </div>
 
@@ -41,8 +77,8 @@ export default function AuthNavBar() {
                                             type="button"
                                             className="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none dark:bg-gray-800 dark:text-gray-400 dark:hover:text-gray-300"
                                         >
-                                            {user.first_name}&nbsp;{user.last_name}
-
+                                            {user.first_name}&nbsp;
+                                            {user.last_name}
                                             <svg
                                                 className="-me-0.5 ms-2 h-4 w-4"
                                                 xmlns="http://www.w3.org/2000/svg"
