@@ -56,9 +56,7 @@ export default function AuthNavBar() {
                                 href={route("users.index")}
                                 active={
                                     route().current("users.index") ||
-                                    route().current("users.show") ||
-                                    route().current("users.create") ||
-                                    route().current("users.edit")
+                                    route().current("users.show")
                                 }
                                 className="hidden sm:inline-flex"
                             >
@@ -178,6 +176,15 @@ export default function AuthNavBar() {
                     <div className="mt-3 space-y-1">
                         <ResponsiveNavLink href={route("home")}>
                             Home
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink href={route("projects.index")}>
+                            Projects
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink href={route("tasks.index")}>
+                            Tasks
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink href={route("users.index")}>
+                            Users
                         </ResponsiveNavLink>
                         <ResponsiveNavLink href={route("dashboard")}>
                             Dashboard
