@@ -22,10 +22,12 @@ class TaskResource extends JsonResource
             'status' => $this->status,
             'priority' => $this->priority,
             'image_path' => $this->image_path,
-            'createdBy' => $this->createdBy,
-            'assignedTo' => $this->assignedTo,
-            'updatedBy' => $this->updatedBy,
-            'projectid' => $this->projectid,
+            'createdBy' => new UserResource($this->createdBy),
+            'assignedTo' => new UserResource($this->assignedTo),
+            'updatedBy' => new UserResource($this->updatedBy),
+            'projectid' => new ProjectResource($this->projectid),
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ];
     }
 }
