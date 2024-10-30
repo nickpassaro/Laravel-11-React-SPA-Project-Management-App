@@ -12,7 +12,11 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return inertia('Tasks/Index');
+        $query = Task::query();
+        $tasks = $query->paginate(10)->onEachPage(1);
+        return inertia('Task/Index', [
+            'tasks' => $tasks,
+        ]);
     }
 
     /**

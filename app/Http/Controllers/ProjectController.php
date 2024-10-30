@@ -12,7 +12,11 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return inertia('Projects/Index');
+        $query = Project::query();
+        $projects = $query->paginate(10)->onEachPage(1);
+        return inertia('Projects/Index', [
+            'projects' => $projects,
+        ]);
     }
 
     /**
