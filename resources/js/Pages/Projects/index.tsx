@@ -1,11 +1,8 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { PageProps, User, Project } from "@/types";
+import { PageProps } from "@/types";
 import { Head } from "@inertiajs/react";
 
-export default function Index({
-    auth,
-    project,
-}: PageProps<{ auth: User; project: Project[] }>) {
+export default function Index() {
     return (
         <AuthenticatedLayout header="All Projects">
             <Head title="All Projects" />
