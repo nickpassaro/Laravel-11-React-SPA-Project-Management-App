@@ -23,6 +23,7 @@ class ProjectResource extends JsonResource
             'image_path' => $this->image_path,
             'createdBy' => new UserResource($this->createdBy),
             'updatedBy' => new UserResource($this->updatedBy),
+            'tasks' => TaskResource::collection($this->tasks),// not sure if this line will work, watch out
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
