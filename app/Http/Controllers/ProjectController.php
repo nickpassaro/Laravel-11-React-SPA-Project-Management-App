@@ -12,7 +12,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $query = Project::query();
+        $query = Project::query()->with(['createdBy', 'updatedBy', 'tasks']);
         $projects = $query->paginate(10)->onEachSide(1);
         return inertia('Projects/Index', [
             'projects' => $projects,

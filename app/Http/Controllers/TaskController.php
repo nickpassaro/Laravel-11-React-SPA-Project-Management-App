@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class TaskController extends Controller
 {
@@ -12,10 +13,10 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $query = Task::query();
+        $query = Task::query()->with(['createdBy', 'assignedTo', 'updatedBy', 'projects']);
         $tasks = $query->paginate(10)->onEachSide(1);
-        return inertia('Tasks/Index', [
-            'tasks' => $tasks,
+        return inertia('Projects/Index', [
+            'projects' => $tasks,
         ]);
     }
 
