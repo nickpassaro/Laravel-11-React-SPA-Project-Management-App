@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 
 class UserController extends Controller
 {
@@ -16,7 +15,7 @@ class UserController extends Controller
         $query = User::query()->with(['projects', 'tasks', 'assignedTasks']);
         $users = $query->paginate(10)->onEachSide(1);
         return inertia('Projects/Index', [
-            'projects' => $users,
+            'users' => $users,
         ]);
     }
 
