@@ -21,6 +21,7 @@ export type Project = {
     updated_by: User;
     created_at: string;
     updated_at: string;
+    tasks: Task[];
 };
 
 export type Task = {
