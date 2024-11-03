@@ -16,11 +16,11 @@ class UserResource extends JsonResource
     {
         return [
             // stuff from users table
-            'id' => $this->id,
+            'id' => $this->id, // not showing this anywhere but may need it
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
-            'email' => $this->email,
-            'created_at' => $this->created_at,
+            'email' => $this->email, // only showing in the single user view
+            'created_at' => $this->created_at, // not showing this anywhere but may need it
         ];
     }
 }
