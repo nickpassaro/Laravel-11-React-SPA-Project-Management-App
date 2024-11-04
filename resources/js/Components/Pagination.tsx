@@ -1,24 +1,26 @@
 import PrimaryButton from "./PrimaryButton";
 
 export default function Pagination({
+    className,
     nextPage,
     previousPage,
 }: {
-    nextPage: string | null;
-    previousPage: string | null;
+    className?: string;
+    nextPage?: string;
+    previousPage?: string;
 }) {
     return (
-        <nav className="flex justify-end space-x-4 mt-4">
+        <nav className={`flex justify-between sm:justify-end space-x-4 px-4 sm:px-0 ${className}`}>
             {previousPage && (
                 <div>
-                    <PrimaryButton link={true} href={previousPage}>
+                    <PrimaryButton link={true} href={previousPage} className="h-9">
                         Previous
                     </PrimaryButton>
                 </div>
             )}
             {nextPage && (
                 <div>
-                    <PrimaryButton link={true} href={nextPage}>
+                    <PrimaryButton link={true} href={nextPage} className="h-9">
                         Next
                     </PrimaryButton>
                 </div>
