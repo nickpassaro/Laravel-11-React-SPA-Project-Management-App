@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('1234567890'),
             'email_verified_at' => time(),
         ]);
+        User::factory(50)->create();
 
         Project::factory(30)->hasTasks(6)->create();
     }

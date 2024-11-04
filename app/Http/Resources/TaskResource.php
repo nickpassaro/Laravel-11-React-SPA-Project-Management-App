@@ -17,8 +17,7 @@ class TaskResource extends JsonResource
         return [
             // stuff from tasks table
             'id' => $this->id,
-            'name' => $this->name,
-            'description' => $this->description, // these will only be shown in the single task view
+            'description' => $this->description,
             'due_date' => $this->due_date,
             'status' => $this->status,
             'priority' => $this->priority,

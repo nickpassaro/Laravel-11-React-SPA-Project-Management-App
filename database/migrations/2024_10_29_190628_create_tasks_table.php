@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->longText('description')->nullable();
             $table->timestamp('due_date')->nullable();
             $table->string('status');

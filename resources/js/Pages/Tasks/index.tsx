@@ -18,7 +18,7 @@ export default function Index({ tasks }: IndexProps) {
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Name</th>
+                            <th>Description</th>
                             <th>Due Date</th>
                             <th>Status</th>
                             <th>Priority</th>
@@ -38,7 +38,7 @@ export default function Index({ tasks }: IndexProps) {
                             >
                                 <td className="p-4">{task.id}</td>
                                 <td className="p-4 max-w-96 text-ellipsis overflow-hidden">
-                                    {task.name}
+                                    {task.description}
                                 </td>
                                 <td className="p-4">
                                     {new Date(task.due_date).toLocaleString()}
