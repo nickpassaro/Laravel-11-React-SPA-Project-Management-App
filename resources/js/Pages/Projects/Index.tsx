@@ -7,6 +7,7 @@ import TableCellTruncated from "@/Components/TableCellTruncated";
 import { Project } from "@/types/index";
 import { Link } from "@inertiajs/react";
 import Pagination from "@/Components/Pagination";
+import SearchPlusPagination from "@/Components/SearchPlusPagination";
 
 export default function Index({
     projects,
@@ -16,13 +17,13 @@ export default function Index({
     projects: {
         data: Project[];
     };
-    nextPage: string | null;
-    previousPage: string | null;
+    nextPage?: string;
+    previousPage?: string;
 }) {
     return (
         <AuthenticatedLayout header="All Projects">
             <Head title="All Projects" />
-            <Pagination nextPage={nextPage} previousPage={previousPage} />
+            <SearchPlusPagination nextPage={nextPage} previousPage={previousPage} />
             <PageSectionCard
                 className="overflow-x-scroll"
                 noPadding={true}
@@ -51,7 +52,7 @@ export default function Index({
                             <TableCellTruncated>
                                 <Link
                                     href={route("projects.show", project.id)}
-                                    className="hover:text-gray-600 hover:underline"
+                                    className="hover:text-gray-600 dark:hover:text-gray-400 hover:underline"
                                 >
                                     {project.name}
                                 </Link>
@@ -79,7 +80,7 @@ export default function Index({
                     ))}
                 </Table>
             </PageSectionCard>
-            <Pagination nextPage={nextPage} previousPage={previousPage} />
+            <Pagination nextPage={nextPage} previousPage={previousPage} className="mt-4" />
         </AuthenticatedLayout>
     );
 }

@@ -7,6 +7,7 @@ import TableCellTruncated from "@/Components/TableCellTruncated";
 import { Task } from "@/types/index";
 import { Link } from "@inertiajs/react";
 import Pagination from "@/Components/Pagination";
+import SearchPlusPagination from "@/Components/SearchPlusPagination";
 
 export default function Index({
     tasks,
@@ -16,13 +17,13 @@ export default function Index({
     tasks: {
         data: Task[];
     };
-    nextPage: string | null;
-    previousPage: string | null;
+    nextPage?: string;
+    previousPage?: string;
 }) {
     return (
         <AuthenticatedLayout header="All Projects">
             <Head title="All Projects" />
-            <Pagination nextPage={nextPage} previousPage={previousPage} />
+            <SearchPlusPagination nextPage={nextPage} previousPage={previousPage} />
             <PageSectionCard
                 className="overflow-x-scroll"
                 noPadding={true}
