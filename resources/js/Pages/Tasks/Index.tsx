@@ -6,7 +6,7 @@ import TableCell from "@/Components/TableCell";
 import TableCellTruncated from "@/Components/TableCellTruncated";
 import { Task } from "@/types/index";
 import { Link } from "@inertiajs/react";
-import PrimaryButton from "@/Components/PrimaryButton";
+import Pagination from "@/Components/Pagination";
 
 export default function Index({
     tasks,
@@ -22,6 +22,7 @@ export default function Index({
     return (
         <AuthenticatedLayout header="All Projects">
             <Head title="All Projects" />
+            <Pagination nextPage={nextPage} previousPage={previousPage} />
             <PageSectionCard
                 className="overflow-x-scroll"
                 noPadding={true}
@@ -80,22 +81,7 @@ export default function Index({
                     ))}
                 </Table>
             </PageSectionCard>
-            <nav className="flex justify-between mt-4">
-                <div>
-                    {previousPage && (
-                        <PrimaryButton link={true} href={previousPage}>
-                            Previous
-                        </PrimaryButton>
-                    )}
-                </div>
-                <div>
-                    {nextPage && (
-                        <PrimaryButton link={true} href={nextPage}>
-                            Next
-                        </PrimaryButton>
-                    )}
-                </div>
-            </nav>
+            <Pagination nextPage={nextPage} previousPage={previousPage} />
         </AuthenticatedLayout>
     );
 }
