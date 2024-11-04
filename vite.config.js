@@ -12,8 +12,8 @@ export default defineConfig({
             ],
             ssr: "resources/js/ssr.tsx",
             refresh: [
-                "resources/js/**/*",
-                "resources/css/**/*",
+                "resources/*",
+                "resources/**/*",
                 // additional folders to watch for refresh
             ],
         }),
