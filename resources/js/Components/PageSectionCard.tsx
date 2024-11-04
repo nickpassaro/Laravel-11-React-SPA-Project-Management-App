@@ -1,12 +1,16 @@
 export default function PageSectionCard({
     children,
-    className
+    className,
+    padding,
 }: {
     children: React.ReactNode;
     className?: string;
+    padding?: string;
 }) {
     return (
-        <div className={`bg-white p-4 shadow sm:rounded-lg sm:p-8 dark:bg-gray-800 ${className}`}>
+        <div
+            className={`bg-white dark:bg-gray-800 shadow sm:rounded-lg ${padding ? `p-${padding}` : 'p-4 sm:p-8'} ${className}`}
+        >
             {children}
         </div>
     );

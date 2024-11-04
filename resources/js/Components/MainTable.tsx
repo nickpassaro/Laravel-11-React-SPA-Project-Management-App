@@ -15,7 +15,7 @@ export default function MainTable({
     return (
         <AuthenticatedLayout header={`All ${typeHeader}`}>
             <Head title={`All ${typeHeader}`} />
-            <PageSectionCard className="overflow-x-scroll p-0 sm:p-0 sm:flex sm:justify-start sm:items-center">
+            <PageSectionCard className="overflow-x-scroll" padding="0">
                 <table className="border-collapse border-x-2 border-b-2 border-gray-200 dark:border-gray-800 whitespace-nowrap">
                     <thead className="bg-slate-200 dark:bg-slate-600 dark:text-gray-300">
                         <tr>
