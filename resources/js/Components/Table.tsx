@@ -2,7 +2,7 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 import PageSectionCard from "@/Components/PageSectionCard";
 
-export default function MainTable({
+export default function Table({
     type,
     columns,
     children,

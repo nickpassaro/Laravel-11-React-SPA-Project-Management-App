@@ -1,4 +1,4 @@
-export default function MainTableCell({
+export default function TableCell({
     className,
     children,
 }: {

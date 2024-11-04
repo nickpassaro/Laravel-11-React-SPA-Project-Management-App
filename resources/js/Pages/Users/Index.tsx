@@ -1,5 +1,5 @@
-import MainTable from "@/Components/MainTable";
-import MainTableCellTruncated from "@/Components/MainTableCellTruncated";
+import Table from "@/Components/Table";
+import TableCellTruncated from "@/Components/TableCellTruncated";
 import { User } from "@/types/index";
 
 export default function Index({
@@ -10,17 +10,17 @@ export default function Index({
     };
 }) {
     return (
-        <MainTable type="Users" columns={["Name"]}>
+        <Table type="Users" columns={["Name"]}>
             {users.data.map((user) => (
                 <tr
                     key={user.id}
                     className="odd:bg-white even:bg-gray-100 dark:odd:bg-neutral-900 dark:even:bg-neutral-800"
                 >
-                    <MainTableCellTruncated>
+                    <TableCellTruncated>
                         {user.first_name} {user.last_name}
-                    </MainTableCellTruncated>
+                    </TableCellTruncated>
                 </tr>
             ))}
-        </MainTable>
+        </Table>
     );
 }
