@@ -14,7 +14,7 @@ class ProjectController extends Controller
     {
         $query = Project::query()->with(['createdBy', 'updatedBy', 'tasks']);
         $projects = $query->simplePaginate(10);
-        return inertia('Projects/ShowAll', [
+        return inertia('Projects/Index', [
             'projects' => $projects,
             'nextPage' => $projects->nextPageUrl(),
             'previousPage' => $projects->previousPageUrl(),

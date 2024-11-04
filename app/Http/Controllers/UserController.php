@@ -14,7 +14,7 @@ class UserController extends Controller
     {
         $query = User::query()->with(['projects', 'tasks', 'assignedTasks']);
         $users = $query->simplePaginate(10);
-        return inertia('Users/ShowAll', [
+        return inertia('Users/Index', [
             'users' => $users,
         ]);
     }
