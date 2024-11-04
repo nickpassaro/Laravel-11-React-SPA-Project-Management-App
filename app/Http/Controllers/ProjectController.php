@@ -16,6 +16,8 @@ class ProjectController extends Controller
         $projects = $query->simplePaginate(10);
         return inertia('Projects/Index', [
             'projects' => $projects,
+            'nextPage' => $projects->nextPageUrl(),
+            'previousPage' => $projects->previousPageUrl(),
         ]);
     }
 
