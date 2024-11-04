@@ -17,7 +17,7 @@ export default function Index({ users }: IndexProps) {
                 <table className="border-collapse border-b-2 border-gray-200 dark:border-gray-800 whitespace-nowrap">
                     <thead className="bg-slate-200 dark:bg-slate-600 dark:text-gray-300">
                         <tr>
-                            <th>Name</th>
+                            <th className="py-1 px-2">Name</th>
                         </tr>
                     </thead>
                     <tbody className=" dark:text-gray-200">

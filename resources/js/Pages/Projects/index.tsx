@@ -17,15 +17,15 @@ export default function Index({ projects }: IndexProps) {
                 <table className="border-collapse border-b-2 border-gray-200 dark:border-gray-800 whitespace-nowrap">
                     <thead className="bg-slate-200 dark:bg-slate-600 dark:text-gray-300">
                         <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Due Date</th>
-                            <th>Status</th>
-                            <th>Tasks</th>
-                            <th>Created By</th>
-                            <th>Updated By</th>
-                            <th>Created At</th>
-                            <th>Updated At</th>
+                            <th className="py-1 px-2">ID</th>
+                            <th className="py-1 px-2">Name</th>
+                            <th className="py-1 px-2">Due Date</th>
+                            <th className="py-1 px-2">Status</th>
+                            <th className="py-1 px-2">Tasks</th>
+                            <th className="py-1 px-2">Created By</th>
+                            <th className="py-1 px-2">Updated By</th>
+                            <th className="py-1 px-2">Created At</th>
+                            <th className="py-1 px-2">Updated At</th>
                         </tr>
                     </thead>
                     <tbody className=" dark:text-gray-200">
