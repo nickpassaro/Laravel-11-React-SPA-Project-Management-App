@@ -1,5 +1,5 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head } from "@inertiajs/react";
+import { Head, Link } from "@inertiajs/react";
 import { Project } from "@/types/index";
 import PageSectionCard from "@/Components/PageSectionCard";
 
@@ -28,7 +28,7 @@ export default function Index({ projects }: IndexProps) {
                             <th className="py-1 px-2">Updated At</th>
                         </tr>
                     </thead>
-                    <tbody className=" dark:text-gray-200">
+                    <tbody className="dark:text-gray-200">
                         {projects.data.map((project) => (
                             <tr
                                 key={project.id}
@@ -38,7 +38,7 @@ export default function Index({ projects }: IndexProps) {
                                     {project.id}
                                 </td>
                                 <td className="p-4 border-x-2 border-gray-200 dark:border-gray-800 max-w-96 text-ellipsis overflow-hidden">
-                                    {project.name}
+                                    <Link href={route("projects.show", project.id)} className="hover:text-gray-600 hover:underline">{project.name}</Link>
                                 </td>
                                 <td className="p-4 border-x-2 border-gray-200 dark:border-gray-800">
                                     {new Date(

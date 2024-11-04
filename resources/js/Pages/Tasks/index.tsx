@@ -30,7 +30,7 @@ export default function Index({ tasks }: IndexProps) {
                             <th className="py-1 px-2">Updated At</th>
                         </tr>
                     </thead>
-                    <tbody className=" dark:text-gray-200">
+                    <tbody className="dark:text-gray-200">
                         {tasks.data.map((task) => (
                             <tr
                                 key={task.id}

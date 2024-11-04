@@ -20,7 +20,7 @@ export default function Index({ users }: IndexProps) {
                             <th className="py-1 px-2">Name</th>
                         </tr>
                     </thead>
-                    <tbody className=" dark:text-gray-200">
+                    <tbody className="dark:text-gray-200">
                         {users.data.map((user) => (
                             <tr
                                 key={user.id}
