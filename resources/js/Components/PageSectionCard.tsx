@@ -1,15 +1,24 @@
 export default function PageSectionCard({
     children,
     className,
-    padding,
+    noPadding,
+    noBg,
+    noShadow,
 }: {
     children: React.ReactNode;
     className?: string;
-    padding?: string;
+    noPadding?: boolean;
+    noBg?: boolean;
+    noShadow?: boolean;
 }) {
     return (
         <div
-            className={`bg-white dark:bg-gray-800 shadow sm:rounded-lg ${padding ? `p-${padding}` : 'p-4 sm:p-8'} ${className}`}
+            className={`
+                ${noPadding ? `p-0` : "p-4 sm:p-8"}
+                ${noBg ? `bg-transparent` : "bg-white dark:bg-gray-800"}
+                ${noShadow ? `shadow-none` : "shadow sm:rounded-lg"}
+                ${className}
+            `}
         >
             {children}
         </div>
