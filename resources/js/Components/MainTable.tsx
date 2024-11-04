@@ -24,7 +24,7 @@ export default function MainTable({ type, columns, children }: MainTableProps) {
                             ))}
                         </tr>
                     </thead>
-                    {children}
+                    <tbody className="dark:text-gray-200">{children}</tbody>
                 </table>
             </PageSectionCard>
         </AuthenticatedLayout>
