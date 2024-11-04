@@ -16,6 +16,8 @@ class UserController extends Controller
         $users = $query->simplePaginate(10);
         return inertia('Users/Index', [
             'users' => $users,
+            'nextPage' => $users->nextPageUrl(),
+            'previousPage' => $users->previousPageUrl(),
         ]);
     }
 

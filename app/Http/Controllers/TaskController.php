@@ -16,6 +16,8 @@ class TaskController extends Controller
         $tasks = $query->simplePaginate(10);
         return inertia('Tasks/Index', [
             'tasks' => $tasks,
+            'nextPage' => $tasks->nextPageUrl(),
+            'previousPage' => $tasks->previousPageUrl(),
         ]);
     }
 
