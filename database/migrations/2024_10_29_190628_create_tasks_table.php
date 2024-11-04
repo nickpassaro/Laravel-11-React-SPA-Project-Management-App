@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -15,8 +14,8 @@ return new class extends Migration
             $table->id();
             $table->longText('description')->nullable();
             $table->timestamp('due_date')->nullable();
-            $table->string('status');
-            $table->string('priority');
+            $table->enum('status', ['Pending', 'In Progress', 'Completed']);
+            $table->enum('priority', ['Low', 'Medium', 'High', 'Urgent']);
             $table->string('image_path')->nullable();
             $table->foreignId('created_by')->constrained('users');
             $table->foreignId('assigned_to')->constrained('users');
