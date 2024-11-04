@@ -13,7 +13,7 @@ class TaskController extends Controller
     public function index()
     {
         $query = Task::query()->with(['createdBy', 'assignedTo', 'updatedBy', 'project']);
-        $tasks = $query->paginate(10)->onEachSide(1);
+        $tasks = $query->simplePaginate(10);
         return inertia('Tasks/Index', [
             'tasks' => $tasks,
         ]);

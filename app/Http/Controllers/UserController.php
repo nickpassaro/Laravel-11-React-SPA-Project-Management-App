@@ -13,7 +13,7 @@ class UserController extends Controller
     public function index()
     {
         $query = User::query()->with(['projects', 'tasks', 'assignedTasks']);
-        $users = $query->paginate(10)->onEachSide(1);
+        $users = $query->simplePaginate(10);
         return inertia('Users/Index', [
             'users' => $users,
         ]);
