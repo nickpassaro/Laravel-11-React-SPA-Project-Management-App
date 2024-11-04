@@ -4,13 +4,13 @@ import MainTableCellTruncated from "@/Components/MainTableCellTruncated";
 import { Project } from "@/types/index";
 import { Link } from "@inertiajs/react";
 
-interface IndexProps {
+export default function Index({
+    projects,
+}: {
     projects: {
         data: Project[];
     };
-}
-
-export default function Index({ projects }: IndexProps) {
+}) {
     return (
         <MainTable
             type="Projects"

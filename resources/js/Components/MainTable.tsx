@@ -2,13 +2,15 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 import PageSectionCard from "@/Components/PageSectionCard";
 
-interface MainTableProps {
+export default function MainTable({
+    type,
+    columns,
+    children,
+}: {
     type: string;
     columns: string[];
     children: React.ReactNode;
-}
-
-export default function MainTable({ type, columns, children }: MainTableProps) {
+}) {
     const typeHeader = type;
     return (
         <AuthenticatedLayout header={`All ${typeHeader}`}>
