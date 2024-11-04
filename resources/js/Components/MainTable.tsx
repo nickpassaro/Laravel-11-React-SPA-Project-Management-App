@@ -9,7 +9,7 @@ interface MainTableProps {
 }
 
 export default function MainTable({ type, columns, children }: MainTableProps) {
-    const typeHeader = type.toUpperCase();
+    const typeHeader = type;
     return (
         <AuthenticatedLayout header={`All ${typeHeader}`}>
             <Head title={`All ${typeHeader}`} />

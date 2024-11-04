@@ -10,7 +10,7 @@ interface IndexProps {
 
 export default function Index({ users }: IndexProps) {
     return (
-        <MainTable type="tasks" columns={["Name"]}>
+        <MainTable type="Users" columns={["Name"]}>
             {users.data.map((user) => (
                 <tr
                     key={user.id}

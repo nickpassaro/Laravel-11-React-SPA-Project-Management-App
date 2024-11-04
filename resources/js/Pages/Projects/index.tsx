@@ -13,7 +13,7 @@ interface IndexProps {
 export default function Index({ projects }: IndexProps) {
     return (
         <MainTable
-            type="projects"
+            type="Projects"
             columns={[
                 "ID",
                 "Project Name",
