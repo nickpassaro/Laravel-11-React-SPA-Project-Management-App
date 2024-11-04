@@ -68,20 +68,12 @@ export default function Index({
                 ))}
             </MainTable>
             <nav className="flex justify-between">
-                <Link
-                    href={previousPage || ""}
-                    className="btn"
-                    disabled={!previousPage}
-                >
-                    Previous
-                </Link>
-                <Link
-                    href={nextPage ? nextPage : ""}
-                    className="btn"
-                    disabled={!nextPage}
-                >
-                    Next
-                </Link>
+                <div>
+                    {previousPage && <Link href={previousPage}>Previous</Link>}
+                </div>
+                <div>
+                    {nextPage && <Link href={nextPage}>Next</Link>}
+                    </div>
             </nav>
         </>
     );

@@ -14,7 +14,7 @@ class TaskController extends Controller
     {
         $query = Task::query()->with(['createdBy', 'assignedTo', 'updatedBy', 'project']);
         $tasks = $query->simplePaginate(10);
-        return inertia('Tasks/Index', [
+        return inertia('Tasks/ShowAll', [
             'tasks' => $tasks,
         ]);
     }
