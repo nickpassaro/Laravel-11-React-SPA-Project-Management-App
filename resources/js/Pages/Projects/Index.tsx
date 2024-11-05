@@ -1,12 +1,11 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head, Link, usePage, router } from "@inertiajs/react";
+import { Head, Link } from "@inertiajs/react";
 import PageSectionCard from "@/Components/PageSectionCard";
 import Table from "@/Components/Table";
 import TableCell from "@/Components/TableCell";
 import TableCellTruncated from "@/Components/TableCellTruncated";
 import { Project } from "@/types/index";
 import SearchPlusPagination from "@/Components/SearchPlusPagination";
-import { useState, useEffect } from "react";
 
 export default function Index({
     projects,
@@ -19,27 +18,6 @@ export default function Index({
     nextPage?: string;
     previousPage?: string;
 }) {
-    const { url } = usePage();
-    const query = new URLSearchParams(url.split("?")[1]);
-    const initialSearchTerm = query.get("search") || "";
-    const [searchTerm, setSearchTerm] = useState(initialSearchTerm);
-
-    useEffect(() => {
-        const timeoutId = setTimeout(() => {
-            router.get(
-                route("projects.index"),
-                { search: searchTerm },
-                { replace: true, preserveState: true }
-            );
-        }, 300);
-
-        return () => clearTimeout(timeoutId);
-    }, [searchTerm]);
-
-    const filteredProjects = projects.data.filter((project) =>
-        project.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-
     return (
         <AuthenticatedLayout header="All Projects">
             <Head title="All Projects" />
@@ -47,8 +25,7 @@ export default function Index({
                 nextPage={nextPage}
                 previousPage={previousPage}
                 className="sticky top-0 py-4 -my-4 bg-gray-100 dark:bg-gray-900"
-                searchTerm={searchTerm}
-                onSearchChange={setSearchTerm}
+                placeholder="Search projects by name"
             />
             <PageSectionCard
                 className="overflow-x-scroll"
@@ -69,7 +46,7 @@ export default function Index({
                         "Updated At",
                     ]}
                 >
-                    {filteredProjects.map((project) => (
+                    {projects.data.map((project) => (
                         <tr
                             key={project.id}
                             className="odd:bg-white even:bg-gray-100 dark:odd:bg-neutral-900 dark:even:bg-neutral-800"

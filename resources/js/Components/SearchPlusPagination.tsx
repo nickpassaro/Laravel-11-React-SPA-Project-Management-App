@@ -6,14 +6,12 @@ export default function SearchPlusPagination({
     nextPage,
     previousPage,
     className,
-    searchTerm,
-    onSearchChange,
+    placeholder,
 }: {
     nextPage?: string;
     previousPage?: string;
     className?: string;
-    searchTerm: string;
-    onSearchChange: (value: string) => void;
+    placeholder?: string;
 }) {
     return (
         <div
@@ -22,10 +20,9 @@ export default function SearchPlusPagination({
             <div className="mx-4 sm:mx-0 pb-4 md:pb-0 border-b-2 border-gray-500 md:border-b-0 flex gap-x-4 flex-grow">
                 <TextInput
                     className="py-2 h-9 w-full flex-grow"
-                    placeholder="Search projects by name"
-                    value={searchTerm}
-                    onChange={(e) => onSearchChange(e.target.value)}
+                    placeholder={placeholder}
                 />
+                <PrimaryButton className="h-9">Search</PrimaryButton>
             </div>
             <Pagination
                 nextPage={nextPage}
