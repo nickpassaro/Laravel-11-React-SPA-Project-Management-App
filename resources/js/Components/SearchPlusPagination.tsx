@@ -5,12 +5,14 @@ import TextInput from "./TextInput";
 export default function SearchPlusPagination({
     nextPage,
     previousPage,
+    className,
 }: {
     nextPage?: string;
     previousPage?: string;
+    className?: string;
 }) {
     return (
-        <div className="grid grid-rows-[auto_auto] grid-cols-1 md:grid-rows-1 md:grid-cols-2 gap-4">
+        <div className={`grid grid-rows-[auto_auto] grid-cols-1 md:grid-rows-1 md:grid-cols-2 gap-4 ${className}`}>
             <div className="mx-4 sm:mx-0 pb-4 md:pb-0 border-b-2 border-gray-500 md:border-b-0 flex gap-x-4 flex-grow">
                 <TextInput className="py-2 h-9 w-full md:w-96 flex-grow" />
                 <PrimaryButton className="h-9">Search</PrimaryButton>
