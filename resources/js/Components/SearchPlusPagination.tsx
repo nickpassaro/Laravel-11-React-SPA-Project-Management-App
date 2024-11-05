@@ -90,7 +90,7 @@ export default function SearchPlusPagination({
 
     return (
         <div
-            className={`grid grid-rows-[auto_auto] grid-cols-1 md:grid-rows-1 md:grid-cols-2 gap-4 ${className}`}
+            className={`grid grid-rows-[auto_auto] grid-cols-1 md:grid-rows-1 md:grid-cols-2 gap-4 sticky top-0 py-4 -my-4 bg-gray-100 dark:bg-gray-900 ${className}`}
         >
             <div className="mx-4 sm:mx-0 pb-4 md:pb-0 border-b-2 border-gray-500 md:border-b-0">
                 <div className="flex gap-x-4 flex-grow pb-2">
