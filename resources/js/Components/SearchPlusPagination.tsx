@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { router } from "@inertiajs/react";
-import Pagination from "./Pagination";
 import PrimaryButton from "./PrimaryButton";
 import TextInput from "./TextInput";
 
@@ -19,6 +18,7 @@ export default function SearchPlusPagination({
 }) {
     const [searchName, setSearchName] = useState("");
 
+    // populate the search field from the URL query string
     useEffect(() => {
         const currentParams = new URLSearchParams(window.location.search);
         const nameFromUrl = currentParams.get("name");
@@ -28,6 +28,7 @@ export default function SearchPlusPagination({
         }
     }, []);
 
+    // set the search parameter from the search box
     const handleSearch = () => {
         const currentParams = new URLSearchParams(window.location.search);
         currentParams.delete("page");
@@ -38,6 +39,7 @@ export default function SearchPlusPagination({
             currentParams.delete("name");
         }
 
+        // navigate to the new URL with the search parameter added as a query string
         router.get(
             route(`${resourceType}.index`),
             Object.fromEntries(currentParams)
@@ -48,6 +50,22 @@ export default function SearchPlusPagination({
         if (event.key === "Enter") {
             handleSearch();
         }
+    };
+
+    // buildHref function is to run the pagination links
+    const buildHref = (pageUrl?: string) => {
+        if (!pageUrl) return undefined;
+
+        const currentParams = new URLSearchParams(window.location.search);
+
+        const newUrl = new URL(pageUrl, window.location.origin);
+        const newParams = new URLSearchParams(newUrl.search);
+
+        newParams.forEach((value, key) => {
+            currentParams.set(key, value);
+        });
+
+        return `${newUrl.pathname}?${currentParams.toString()}`;
     };
 
     return (
@@ -64,18 +82,34 @@ export default function SearchPlusPagination({
                     onKeyDown={handleKeyDown}
                 />
                 <PrimaryButton
-                    link={true}
                     onClick={handleSearch}
                     className="h-9"
                 >
                     Search
                 </PrimaryButton>
             </div>
-            <Pagination
-                nextPage={nextPage}
-                previousPage={previousPage}
-                className="mt-0 px-0 md:flex-grow-0"
-            />
+            <nav className="flex flex-row-reverse justify-center md:justify-start gap-x-4 sm:px-0 mt-0 px-0 md:flex-grow-0">
+                <div className="mx-0 my-0">
+                    <PrimaryButton
+                        link={true}
+                        href={buildHref(nextPage)}
+                        className="h-9"
+                        disabled={!nextPage}
+                    >
+                        Next
+                    </PrimaryButton>
+                </div>
+                <div className="mx-0 my-0">
+                    <PrimaryButton
+                        link={true}
+                        href={buildHref(previousPage)}
+                        className="h-9"
+                        disabled={!previousPage}
+                    >
+                        Previous
+                    </PrimaryButton>
+                </div>
+            </nav>
         </div>
     );
 }
