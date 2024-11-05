@@ -18,29 +18,48 @@ export default function SearchPlusPagination({
     resourceType: "projects" | "tasks" | "users";
 }) {
     const [searchBoxQuery, setSearchBoxQuery] = useState("");
+    const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
+    const [selectedPriority, setSelectedPriority] = useState<string | null>(
+        null
+    );
 
-    // populate the search field from the URL query string
+    // populate the fields from the URL query string
     useEffect(() => {
         const currentParams = new URLSearchParams(window.location.search);
-        const searchBoxQueryFromUrl = currentParams.get("searchBox");
-
-        if (searchBoxQueryFromUrl) {
-            setSearchBoxQuery(searchBoxQueryFromUrl);
-        }
+        setSearchBoxQuery(currentParams.get("searchBox") || "");
+        setSelectedStatus(currentParams.get("status"));
+        setSelectedPriority(currentParams.get("priority"));
     }, []);
 
-    // set the search parameter from the search box
+    // create the query string that till be handed to the router and then run the route
     const handleSearch = () => {
         const currentParams = new URLSearchParams(window.location.search);
+
+        // Remove the page parameter to reset pagination
         currentParams.delete("page");
 
+        // Handle search box query
         if (searchBoxQuery) {
             currentParams.set("searchBox", searchBoxQuery);
         } else {
             currentParams.delete("searchBox");
         }
 
-        // navigate to the new URL with the search parameter added as a query string
+        // Handle status dropdown
+        if (selectedStatus) {
+            currentParams.set("status", selectedStatus);
+        } else {
+            currentParams.delete("status");
+        }
+
+        // Handle priority dropdown
+        if (selectedPriority) {
+            currentParams.set("priority", selectedPriority);
+        } else {
+            currentParams.delete("priority");
+        }
+
+        // Navigate to the new URL with updated query parameters
         router.get(
             route(`${resourceType}.index`),
             Object.fromEntries(currentParams)
@@ -93,23 +112,29 @@ export default function SearchPlusPagination({
                         <SelectInput
                             className="py-1 flex-grow self-stretch"
                             id="searchByStatusDropDown"
+                            value={selectedStatus || ""}
+                            onChange={(e) => setSelectedStatus(e.target.value)}
                         >
                             <option value="">Status</option>
-                            <option value="pending">Pending</option>
-                            <option value="in_progress">In Progress</option>
-                            <option value="completed">Completed</option>
+                            <option value="Pending">Pending</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Completed">Completed</option>
                         </SelectInput>
                     )}
                     {resourceType === "tasks" && (
                         <SelectInput
                             className="py-1 flex-grow self-stretch"
                             id="searchByPriorityDropDown"
+                            value={selectedPriority || ""}
+                            onChange={(e) =>
+                                setSelectedPriority(e.target.value)
+                            }
                         >
                             <option value="">Priority</option>
-                            <option value="low">Low</option>
-                            <option value="medium">Medium</option>
-                            <option value="high">High</option>
-                            <option value="urgent">Urgent</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                            <option value="Urgent">Urgent</option>
                         </SelectInput>
                     )}
                 </div>

@@ -14,8 +14,16 @@ class TaskController extends Controller
     {
         $query = Task::with(['createdBy', 'assignedTo', 'updatedBy', 'project']);
 
-        if (request('searchBox')) {
-            $query->where('description', 'like', '%' . request('searchBox') . '%');
+        if ($searchBox = request('searchBox')) {
+            $query->where('description', 'like', '%' . $searchBox . '%'); // description is referring to the db column "description" in the projects table
+        }
+
+        if ($status = request('status')) {
+            $query->where('status', 'like', '%' . $status . '%');
+        }
+
+        if ($priority = request('priority')) {
+            $query->where('priority', 'like', '%' . $priority . '%');
         }
 
         $tasks = $query->simplePaginate(100);

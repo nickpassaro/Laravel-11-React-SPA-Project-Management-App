@@ -14,8 +14,12 @@ class ProjectController extends Controller
     {
         $query = Project::with(['createdBy', 'updatedBy', 'tasks']);
 
-        if (request('searchBox')) {
-            $query->where('name', 'like', '%' . request('searchBox') . '%');
+        if ($searchBox = request('searchBox')) {
+            $query->where('name', 'like', '%' . $searchBox . '%'); // name is referring to the db column "name" in the projects table
+        }
+
+        if ($status = request('status')) {
+            $query->where('status', 'like', '%' . $status . '%');
         }
 
         $projects = $query->simplePaginate(100);
