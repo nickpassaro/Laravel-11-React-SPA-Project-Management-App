@@ -13,11 +13,18 @@ class ProjectController extends Controller
     public function index()
     {
         $query = Project::with(['createdBy', 'updatedBy', 'tasks']);
+
+        if (request('name')) {
+            $query->where('name', 'like', '%' . request('name') . '%');
+        }
+
         $projects = $query->simplePaginate(100);
+
         return inertia('Projects/Index', [
             'projects' => $projects,
             'nextPage' => $projects->nextPageUrl(),
             'previousPage' => $projects->previousPageUrl(),
+            'queryParams' => request()->query(),
         ]);
     }
 

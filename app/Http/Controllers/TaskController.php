@@ -13,11 +13,18 @@ class TaskController extends Controller
     public function index()
     {
         $query = Task::with(['createdBy', 'assignedTo', 'updatedBy', 'project']);
+
+        if (request('name')) {
+            $query->where('description', 'like', '%' . request('name') . '%');
+        }
+
         $tasks = $query->simplePaginate(100);
+
         return inertia('Tasks/Index', [
             'tasks' => $tasks,
             'nextPage' => $tasks->nextPageUrl(),
             'previousPage' => $tasks->previousPageUrl(),
+            'queryParams' => request()->query(),
         ]);
     }
 

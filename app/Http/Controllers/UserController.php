@@ -13,11 +13,21 @@ class UserController extends Controller
     public function index()
     {
         $query = User::with(['projects', 'tasks', 'assignedTasks']);
+
+        if (request('name')) {
+            $query
+                ->where('first_name', 'like', '%' . request('name') . '%')
+                ->orWhere('last_name', 'like', '%' . request('name') . '%');
+
+        }
+
         $users = $query->simplePaginate(20);
+
         return inertia('Users/Index', [
             'users' => $users,
             'nextPage' => $users->nextPageUrl(),
             'previousPage' => $users->previousPageUrl(),
+            'queryParams' => request()->query(),
         ]);
     }
 
