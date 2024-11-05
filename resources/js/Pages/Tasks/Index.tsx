@@ -26,6 +26,7 @@ export default function Index({
                 previousPage={previousPage}
                 className="sticky top-0 py-4 -my-4 bg-gray-100 dark:bg-gray-900"
                 placeholder="Search tasks by description"
+                resourceType="tasks"
             />
             <PageSectionCard
                 className="overflow-x-scroll"

@@ -7,11 +7,13 @@ export default function SearchPlusPagination({
     previousPage,
     className,
     placeholder,
+    resourceType,
 }: {
     nextPage?: string;
     previousPage?: string;
     className?: string;
     placeholder?: string;
+    resourceType: "projects" | "tasks" | "users";
 }) {
     return (
         <div
@@ -22,7 +24,9 @@ export default function SearchPlusPagination({
                     className="py-2 h-9 w-full flex-grow"
                     placeholder={placeholder}
                 />
-                <PrimaryButton className="h-9">Search</PrimaryButton>
+                <PrimaryButton link={true} className="h-9">
+                    Search
+                </PrimaryButton>
             </div>
             <Pagination
                 nextPage={nextPage}
