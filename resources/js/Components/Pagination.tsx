@@ -10,18 +10,18 @@ export default function Pagination({
     previousPage?: string;
 }) {
     return (
-        <nav className={`flex justify-between sm:justify-end space-x-4 px-4 sm:px-0 ${className}`}>
-            {previousPage && (
-                <div>
-                    <PrimaryButton link={true} href={previousPage} className="h-9">
-                        Previous
+        <nav className={`flex flex-row-reverse justify-center md:justify-start gap-x-8 md:gap-x-4 px-4 sm:px-0 ${className}`}>
+            {nextPage && (
+                <div className="mx-0 my-0">
+                    <PrimaryButton link={true} href={nextPage} className="h-9">
+                        Next
                     </PrimaryButton>
                 </div>
             )}
-            {nextPage && (
-                <div>
-                    <PrimaryButton link={true} href={nextPage} className="h-9">
-                        Next
+            {previousPage && (
+                <div className="mx-0 my-0">
+                    <PrimaryButton link={true} href={previousPage} className="h-9">
+                        Previous
                     </PrimaryButton>
                 </div>
             )}

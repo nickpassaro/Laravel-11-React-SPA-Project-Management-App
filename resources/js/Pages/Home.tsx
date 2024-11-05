@@ -6,7 +6,7 @@ const children = () => {
     return (
         <>
             <Head title="Home" />
-            <h1>Hello World!</h1>
+            <h1 className="dark:text-gray-200">Hello World!</h1>
         </>
     );
 };
