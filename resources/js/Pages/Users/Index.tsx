@@ -24,7 +24,7 @@ export default function Index({
                 nextPage={nextPage}
                 previousPage={previousPage}
                 className="sticky top-0 py-4 -my-4 bg-gray-100 dark:bg-gray-900"
-                placeholder="Search users by name"
+                placeholder="Search by name"
                 resourceType="users"
             />
             <PageSectionCard
