@@ -14,8 +14,8 @@ class TaskController extends Controller
     {
         $query = Task::with(['createdBy', 'assignedTo', 'updatedBy', 'project']);
 
-        if (request('name')) {
-            $query->where('description', 'like', '%' . request('name') . '%');
+        if (request('searchBox')) {
+            $query->where('description', 'like', '%' . request('searchBox') . '%');
         }
 
         $tasks = $query->simplePaginate(100);

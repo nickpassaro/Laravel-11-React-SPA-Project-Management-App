@@ -14,10 +14,10 @@ class UserController extends Controller
     {
         $query = User::with(['projects', 'tasks', 'assignedTasks']);
 
-        if (request('name')) {
+        if (request('searchBox')) {
             $query
-                ->where('first_name', 'like', '%' . request('name') . '%')
-                ->orWhere('last_name', 'like', '%' . request('name') . '%');
+                ->where('first_name', 'like', '%' . request('searchBox') . '%')
+                ->orWhere('last_name', 'like', '%' . request('searchBox') . '%');
 
         }
 

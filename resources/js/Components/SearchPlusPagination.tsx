@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { router } from "@inertiajs/react";
 import PrimaryButton from "./PrimaryButton";
 import TextInput from "./TextInput";
+import SelectInput from "./SelectInput";
 
 export default function SearchPlusPagination({
     nextPage,
@@ -16,15 +17,15 @@ export default function SearchPlusPagination({
     placeholder?: string;
     resourceType: "projects" | "tasks" | "users";
 }) {
-    const [searchName, setSearchName] = useState("");
+    const [searchBoxQuery, setSearchBoxQuery] = useState("");
 
     // populate the search field from the URL query string
     useEffect(() => {
         const currentParams = new URLSearchParams(window.location.search);
-        const nameFromUrl = currentParams.get("name");
+        const searchBoxQueryFromUrl = currentParams.get("searchBox");
 
-        if (nameFromUrl) {
-            setSearchName(nameFromUrl);
+        if (searchBoxQueryFromUrl) {
+            setSearchBoxQuery(searchBoxQueryFromUrl);
         }
     }, []);
 
@@ -33,10 +34,10 @@ export default function SearchPlusPagination({
         const currentParams = new URLSearchParams(window.location.search);
         currentParams.delete("page");
 
-        if (searchName) {
-            currentParams.set("name", searchName);
+        if (searchBoxQuery) {
+            currentParams.set("searchBox", searchBoxQuery);
         } else {
-            currentParams.delete("name");
+            currentParams.delete("searchBox");
         }
 
         // navigate to the new URL with the search parameter added as a query string
@@ -73,25 +74,38 @@ export default function SearchPlusPagination({
             className={`grid grid-rows-[auto_auto] grid-cols-1 md:grid-rows-1 md:grid-cols-2 gap-4 ${className}`}
         >
             <div className="mx-4 sm:mx-0 pb-4 md:pb-0 border-b-2 border-gray-500 md:border-b-0">
-                <div className="grid grid-rows-2 grid-cols-1 sm:grid-rows-1 sm:grid-cols-1">
-                    <div className="flex gap-x-4 flex-grow">
-                        <TextInput
-                            className="py-2 h-9 w-full flex-grow"
-                            id="searchName"
-                            placeholder={placeholder}
-                            value={searchName}
-                            onChange={(e) => setSearchName(e.target.value)}
-                            onKeyDown={handleKeyDown}
-                        />
-                        <PrimaryButton
-                            onClick={handleSearch}
-                            className="h-9"
-                        >
-                            Search
-                        </PrimaryButton>
-                    </div>
-                    <select name="" id=""></select>
-                    <select name="" id=""></select>
+                <div className="flex gap-x-4 flex-grow pb-2">
+                    <TextInput
+                        className="py-2 h-9 w-full flex-grow"
+                        id="searchBoxQuery"
+                        placeholder={placeholder}
+                        value={searchBoxQuery}
+                        onChange={(e) => setSearchBoxQuery(e.target.value)}
+                        onKeyDown={handleKeyDown}
+                    />
+                    <PrimaryButton onClick={handleSearch} className="h-9">
+                        Search
+                    </PrimaryButton>
+                </div>
+                <div className="flex gap-x-4 flex-grow justify-stretch">
+                    {(resourceType === "projects" ||
+                        resourceType === "tasks") && (
+                        <SelectInput className="py-1 flex-grow self-stretch">
+                            <option value="">Status</option>
+                            <option value="pending">Pending</option>
+                            <option value="in_progress">In Progress</option>
+                            <option value="completed">Completed</option>
+                        </SelectInput>
+                    )}
+                    {resourceType === "tasks" && (
+                        <SelectInput className="py-1 flex-grow self-stretch">
+                            <option value="">Priority</option>
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                            <option value="urgent">Urgent</option>
+                        </SelectInput>
+                    )}
                 </div>
             </div>
             <nav className="flex flex-row-reverse justify-center md:justify-start gap-x-4 sm:px-0 mt-0 px-0 md:flex-grow-0">
