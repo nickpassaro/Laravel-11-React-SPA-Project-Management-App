@@ -12,7 +12,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $query = User::with(['projects', 'tasks', 'assignedTasks']);
+        $query = User::query();
 
         if ($searchBox = request('searchBox')) {
             $query
