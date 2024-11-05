@@ -6,7 +6,7 @@ export default function Table({
     children: React.ReactNode;
 }) {
     return (
-        <table className="border-collapse border-x-2 border-b-2 border-gray-200 dark:border-gray-800 whitespace-nowrap">
+        <table className="border-collapse border-x-2 border-b-2 border-gray-200 dark:border-gray-800 whitespace-nowrap min-w-full">
             <thead className="bg-slate-200 dark:bg-slate-600 dark:text-gray-300">
                 <tr>
                     {columns.map((column) => (
