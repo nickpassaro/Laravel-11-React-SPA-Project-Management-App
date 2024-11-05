@@ -90,7 +90,10 @@ export default function SearchPlusPagination({
                 <div className="flex gap-x-4 flex-grow justify-stretch">
                     {(resourceType === "projects" ||
                         resourceType === "tasks") && (
-                        <SelectInput className="py-1 flex-grow self-stretch">
+                        <SelectInput
+                            className="py-1 flex-grow self-stretch"
+                            id="searchByStatusDropDown"
+                        >
                             <option value="">Status</option>
                             <option value="pending">Pending</option>
                             <option value="in_progress">In Progress</option>
@@ -98,7 +101,10 @@ export default function SearchPlusPagination({
                         </SelectInput>
                     )}
                     {resourceType === "tasks" && (
-                        <SelectInput className="py-1 flex-grow self-stretch">
+                        <SelectInput
+                            className="py-1 flex-grow self-stretch"
+                            id="searchByPriorityDropDown"
+                        >
                             <option value="">Priority</option>
                             <option value="low">Low</option>
                             <option value="medium">Medium</option>
