@@ -42,7 +42,7 @@ export default function Index({
                         { label: "Project Name", key: "name" },
                         { label: "Due Date", key: "due_date" },
                         { label: "Status", key: "status" },
-                        { label: "Tasks", key: "tasks.length" },
+                        { label: "Tasks", key: "tasks" },
                         { label: "Created By", key: "created_by" },
                         { label: "Updated By", key: "updated_by" },
                         { label: "Created At", key: "created_at" },
