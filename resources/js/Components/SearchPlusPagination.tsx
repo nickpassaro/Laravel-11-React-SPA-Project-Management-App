@@ -27,7 +27,7 @@ export default function SearchPlusPagination({
     // populate the fields from the URL query string
     useEffect(() => {
         const currentParams = new URLSearchParams(window.location.search);
-        setSearchBoxQuery(currentParams.get("searchBox") || "");
+        setSearchBoxQuery(currentParams.get("searchBox"));
         setSelectedStatus(currentParams.get("status"));
         setSelectedPriority(currentParams.get("priority"));
     }, []);
@@ -98,7 +98,7 @@ export default function SearchPlusPagination({
                         )}
                         {resourceType === "tasks" && (
                             <SelectInput
-                                className="py-1 flex-grow self-stretch"
+                                className="py-1"
                                 id="searchByPriorityDropDown"
                                 value={selectedPriority || ""}
                                 onChange={(e) =>
