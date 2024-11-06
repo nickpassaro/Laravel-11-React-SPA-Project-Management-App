@@ -18,7 +18,7 @@ export default function SearchPlusPagination({
     placeholder?: string;
     resourceType: "projects" | "tasks" | "users";
 }) {
-    const [searchBoxQuery, setSearchBoxQuery] = useState("");
+    const [searchBoxQuery, setSearchBoxQuery] = useState<string | null>(null);
     const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
     const [selectedPriority, setSelectedPriority] = useState<string | null>(
         null
@@ -83,7 +83,7 @@ export default function SearchPlusPagination({
                         className="py-2 h-9 w-full flex-grow"
                         id="searchBoxQuery"
                         placeholder={placeholder}
-                        value={searchBoxQuery}
+                        value={searchBoxQuery || ""}
                         onChange={(e) => setSearchBoxQuery(e.target.value)}
                         onKeyDown={handleKeyDown}
                     />
