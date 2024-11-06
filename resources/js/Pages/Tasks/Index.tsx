@@ -6,6 +6,7 @@ import TableCell from "@/Components/TableCell";
 import TableCellTruncated from "@/Components/TableCellTruncated";
 import { Task } from "@/types/index";
 import SearchPlusPagination from "@/Components/SearchPlusPagination";
+import Pagination from "@/Components/Pagination";
 
 export default function Index({
     tasks,
@@ -85,6 +86,7 @@ export default function Index({
                     ))}
                 </Table>
             </PageSectionCard>
+            <Pagination nextPage={nextPage} previousPage={previousPage} className="hidden short:flex" />
         </AuthenticatedLayout>
     );
 }

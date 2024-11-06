@@ -5,6 +5,7 @@ import Table from "@/Components/Table";
 import TableCellTruncated from "@/Components/TableCellTruncated";
 import { User } from "@/types/index";
 import SearchPlusPagination from "@/Components/SearchPlusPagination";
+import Pagination from "@/Components/Pagination";
 
 export default function Index({
     users,
@@ -45,6 +46,7 @@ export default function Index({
                     ))}
                 </Table>
             </PageSectionCard>
+            <Pagination nextPage={nextPage} previousPage={previousPage} className="hidden short:flex" />
         </AuthenticatedLayout>
     );
 }

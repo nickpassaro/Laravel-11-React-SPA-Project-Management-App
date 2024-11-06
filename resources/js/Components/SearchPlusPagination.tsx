@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { router } from "@inertiajs/react";
+import Pagination from "./Pagination";
 import PrimaryButton from "./PrimaryButton";
 import TextInput from "./TextInput";
 import SelectInput from "./SelectInput";
@@ -72,25 +73,9 @@ export default function SearchPlusPagination({
         }
     };
 
-    // buildHref function is to run the pagination links
-    const buildHref = (pageUrl?: string) => {
-        if (!pageUrl) return undefined;
-
-        const currentParams = new URLSearchParams(window.location.search);
-
-        const newUrl = new URL(pageUrl, window.location.origin);
-        const newParams = new URLSearchParams(newUrl.search);
-
-        newParams.forEach((value, key) => {
-            currentParams.set(key, value);
-        });
-
-        return `${newUrl.pathname}?${currentParams.toString()}`;
-    };
-
     return (
         <div
-            className={`grid grid-rows-[auto_auto] grid-cols-1 md:grid-rows-1 md:grid-cols-2 gap-4 sticky top-0 py-4 -my-4 bg-gray-100 dark:bg-gray-900 ${className}`}
+            className={`grid grid-rows-[auto_auto] grid-cols-1 md:grid-rows-1 md:grid-cols-2 gap-4 sticky short:static top-0 py-4 -my-4 bg-gray-100 dark:bg-gray-900 ${className}`}
         >
             <div className="mx-4 sm:mx-0 pb-4 md:pb-0 border-b-2 border-gray-500 md:border-b-0">
                 <div className="flex gap-x-4 flex-grow pb-2">
@@ -139,28 +124,11 @@ export default function SearchPlusPagination({
                     )}
                 </div>
             </div>
-            <nav className="flex flex-row-reverse justify-center md:justify-start gap-x-4 sm:px-0 mt-0 px-0 md:flex-grow-0">
-                <div className="mx-0 my-0">
-                    <PrimaryButton
-                        link={true}
-                        href={buildHref(nextPage)}
-                        className="h-9"
-                        disabled={!nextPage}
-                    >
-                        Next
-                    </PrimaryButton>
-                </div>
-                <div className="mx-0 my-0">
-                    <PrimaryButton
-                        link={true}
-                        href={buildHref(previousPage)}
-                        className="h-9"
-                        disabled={!previousPage}
-                    >
-                        Previous
-                    </PrimaryButton>
-                </div>
-            </nav>
+            <Pagination
+                nextPage={nextPage}
+                previousPage={previousPage}
+                className="mt-0 px-0 md:flex-grow-0"
+            />
         </div>
     );
 }
