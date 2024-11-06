@@ -36,17 +36,17 @@ export default function Index({
             >
                 <Table
                     columns={[
-                        "ID",
-                        "Description",
-                        "Due Date",
-                        "Status",
-                        "Priority",
-                        "Created By",
-                        "Assigned To",
-                        "Updated By",
-                        "Project ID",
-                        "Created At",
-                        "Updated At",
+                        { label: "ID", key: "id" },
+                        { label: "Description", key: "description" },
+                        { label: "Due Date", key: "due_date" },
+                        { label: "Status", key: "status" },
+                        { label: "Priority", key: "priority" },
+                        { label: "Created By", key: "created_by" },
+                        { label: "Assigned To", key: "assigned_to" },
+                        { label: "Updated By", key: "updated_by" },
+                        { label: "Project ID", key: "project_id" },
+                        { label: "Created At", key: "created_at" },
+                        { label: "Updated At", key: "updated_at" },
                     ]}
                 >
                     {tasks.data.map((task) => (

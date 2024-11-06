@@ -2,7 +2,7 @@ export default function Table({
     columns,
     children,
 }: {
-    columns: string[];
+    columns: { label: string; key: string }[];
     children: React.ReactNode;
 }) {
     return (
@@ -10,8 +10,12 @@ export default function Table({
             <thead className="bg-slate-200 dark:bg-slate-600 dark:text-gray-300">
                 <tr>
                     {columns.map((column) => (
-                        <th key={column} className="py-1 px-2">
-                            {column}
+                        <th
+                            key={column.key}
+                            className="py-1 px-2"
+                            onClick={(e) => handleSort(column.key)}
+                        >
+                            {column.label}
                         </th>
                     ))}
                 </tr>

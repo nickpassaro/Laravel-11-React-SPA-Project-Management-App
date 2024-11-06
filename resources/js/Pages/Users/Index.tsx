@@ -33,7 +33,8 @@ export default function Index({
                 noBg={true}
                 noShadow={true}
             >
-                <Table columns={["Name"]}>
+                <Table
+                    columns={[{ label: "Name", key: "first_name" }]}
                     {users.data.map((user) => (
                         <tr
                             key={user.id}
