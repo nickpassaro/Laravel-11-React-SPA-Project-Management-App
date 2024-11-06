@@ -84,7 +84,11 @@ export default function Index({
                     ))}
                 </Table>
             </PageSectionCard>
-            <Pagination nextPage={nextPage} previousPage={previousPage} className="hidden short:flex" />
+            <Pagination
+                nextPage={nextPage}
+                previousPage={previousPage}
+                className="hidden short:flex"
+            />
         </AuthenticatedLayout>
     );
 }
