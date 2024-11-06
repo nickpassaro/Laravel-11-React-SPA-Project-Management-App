@@ -12,12 +12,14 @@ export default function Index({
     projects,
     nextPage,
     previousPage,
+    sortDirection,
 }: {
     projects: {
         data: Project[];
     };
     nextPage?: string;
     previousPage?: string;
+    sortDirection: string;
 }) {
     return (
         <AuthenticatedLayout header="All Projects">
@@ -46,6 +48,8 @@ export default function Index({
                         { label: "Created At", key: "created_at" },
                         { label: "Updated At", key: "updated_at" },
                     ]}
+                    resourceType="projects"
+                    sortDirection={sortDirection}
                 >
                     {projects.data.map((project) => (
                         <tr

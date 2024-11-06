@@ -1,8 +1,12 @@
 export default function Table({
     columns,
+    resourceType,
+    sortDirection,
     children,
 }: {
     columns: { label: string; key: string }[];
+    resourceType: "projects" | "tasks" | "users";
+    sortDirection: string;
     children: React.ReactNode;
 }) {
     return (

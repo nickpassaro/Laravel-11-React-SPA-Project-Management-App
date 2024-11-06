@@ -11,12 +11,14 @@ export default function Index({
     users,
     nextPage,
     previousPage,
+    sortDirection,
 }: {
     users: {
         data: User[];
     };
     nextPage?: string;
     previousPage?: string;
+    sortDirection: string;
 }) {
     return (
         <AuthenticatedLayout header="All Users">
@@ -35,6 +37,9 @@ export default function Index({
             >
                 <Table
                     columns={[{ label: "Name", key: "first_name" }]}
+                    resourceType="users"
+                    sortDirection={sortDirection}
+                >
                     {users.data.map((user) => (
                         <tr
                             key={user.id}

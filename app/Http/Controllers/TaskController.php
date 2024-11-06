@@ -37,6 +37,7 @@ class TaskController extends Controller
             'nextPage' => $tasks->nextPageUrl(),
             'previousPage' => $tasks->previousPageUrl(),
             'queryParams' => request()->query(),
+            'sortDirection' => $sortDirection,
         ]);
     }
 

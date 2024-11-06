@@ -12,12 +12,14 @@ export default function Index({
     tasks,
     nextPage,
     previousPage,
+    sortDirection,
 }: {
     tasks: {
         data: Task[];
     };
     nextPage?: string;
     previousPage?: string;
+    sortDirection: string;
 }) {
     return (
         <AuthenticatedLayout header="All Tasks">
@@ -48,6 +50,8 @@ export default function Index({
                         { label: "Created At", key: "created_at" },
                         { label: "Updated At", key: "updated_at" },
                     ]}
+                    resourceType="tasks"
+                    sortDirection={sortDirection}
                 >
                     {tasks.data.map((task) => (
                         <tr
