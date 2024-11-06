@@ -31,6 +31,7 @@ class UserController extends Controller
             'nextPage' => $users->nextPageUrl(),
             'previousPage' => $users->previousPageUrl(),
             'queryParams' => request()->query(),
+            'sortField' => $sortField,
             'sortDirection' => $sortDirection,
         ]);
     }

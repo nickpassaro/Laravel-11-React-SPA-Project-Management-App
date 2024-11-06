@@ -11,6 +11,7 @@ export default function Index({
     users,
     nextPage,
     previousPage,
+    sortField,
     sortDirection,
 }: {
     users: {
@@ -18,10 +19,11 @@ export default function Index({
     };
     nextPage?: string;
     previousPage?: string;
+    sortField: string;
     sortDirection: string;
 }) {
     return (
-        <AuthenticatedLayout header="All Users">
+        <AuthenticatedLayout header="All Users" isTablePage={true}>
             <Head title="All Users" />
             <SearchPlusPagination
                 nextPage={nextPage}
@@ -38,6 +40,7 @@ export default function Index({
                 <Table
                     columns={[{ label: "Name", key: "first_name" }]}
                     resourceType="users"
+                    sortField={sortField}
                     sortDirection={sortDirection}
                 >
                     {users.data.map((user) => (

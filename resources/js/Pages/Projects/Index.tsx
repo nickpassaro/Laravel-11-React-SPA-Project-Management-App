@@ -12,6 +12,7 @@ export default function Index({
     projects,
     nextPage,
     previousPage,
+    sortField,
     sortDirection,
 }: {
     projects: {
@@ -19,10 +20,11 @@ export default function Index({
     };
     nextPage?: string;
     previousPage?: string;
+    sortField: string;
     sortDirection: string;
 }) {
     return (
-        <AuthenticatedLayout header="All Projects">
+        <AuthenticatedLayout header="All Projects" isTablePage={true}>
             <Head title="All Projects" />
             <SearchPlusPagination
                 nextPage={nextPage}
@@ -49,6 +51,7 @@ export default function Index({
                         { label: "Updated At", key: "updated_at" },
                     ]}
                     resourceType="projects"
+                    sortField={sortField}
                     sortDirection={sortDirection}
                 >
                     {projects.data.map((project) => (

@@ -12,6 +12,7 @@ export default function Index({
     tasks,
     nextPage,
     previousPage,
+    sortField,
     sortDirection,
 }: {
     tasks: {
@@ -19,10 +20,11 @@ export default function Index({
     };
     nextPage?: string;
     previousPage?: string;
+    sortField: string;
     sortDirection: string;
 }) {
     return (
-        <AuthenticatedLayout header="All Tasks">
+        <AuthenticatedLayout header="All Tasks" isTablePage={true}>
             <Head title="All Tasks" />
             <SearchPlusPagination
                 nextPage={nextPage}
@@ -51,6 +53,7 @@ export default function Index({
                         { label: "Updated At", key: "updated_at" },
                     ]}
                     resourceType="tasks"
+                    sortField={sortField}
                     sortDirection={sortDirection}
                 >
                     {tasks.data.map((task) => (

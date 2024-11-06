@@ -33,6 +33,7 @@ class ProjectController extends Controller
             'nextPage' => $projects->nextPageUrl(),
             'previousPage' => $projects->previousPageUrl(),
             'queryParams' => request()->query(),
+            'sortField' => $sortField,
             'sortDirection' => $sortDirection,
         ]);
     }

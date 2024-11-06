@@ -74,61 +74,65 @@ export default function SearchPlusPagination({
     };
 
     return (
-        <div
-            className={`grid grid-rows-[auto_auto] grid-cols-1 md:grid-rows-1 md:grid-cols-2 gap-4 sticky short:static top-0 py-4 -my-4 bg-gray-100 dark:bg-gray-900 ${className}`}
-        >
-            <div className="mx-4 sm:mx-0 pb-4 md:pb-0 border-b-2 border-gray-500 md:border-b-0">
-                <div className="flex gap-x-4 flex-grow pb-2">
-                    <TextInput
-                        className="py-2 h-9 w-full flex-grow"
-                        id="searchBoxQuery"
-                        placeholder={placeholder}
-                        value={searchBoxQuery || ""}
-                        onChange={(e) => setSearchBoxQuery(e.target.value)}
-                        onKeyDown={handleKeyDown}
-                    />
-                    <PrimaryButton onClick={handleSearch} className="h-9">
-                        Search
-                    </PrimaryButton>
+        <div className="mx-auto w-full">
+            <div
+                className={`grid grid-rows-[auto_auto] grid-cols-1 sm:grid-rows-1 sm:grid-cols-[1fr_auto] md:grid-cols-[25rem_16rem] xl:grid-cols-[50rem_16rem] gap-x-16 gap-y-4 justify-between items-end sticky short:static top-0 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-gray-900 ${className}`}
+            >
+                <div className="border-b-2 border-gray-500 sm:border-b-0">
+                    <div className="flex gap-x-4 pb-2 flex-grow justify-stretch">
+                        {(resourceType === "projects" ||
+                            resourceType === "tasks") && (
+                            <SelectInput
+                                className="py-1"
+                                id="searchByStatusDropDown"
+                                value={selectedStatus || ""}
+                                onChange={(e) =>
+                                    setSelectedStatus(e.target.value)
+                                }
+                            >
+                                <option value="">Status</option>
+                                <option value="Pending">Pending</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="Completed">Completed</option>
+                            </SelectInput>
+                        )}
+                        {resourceType === "tasks" && (
+                            <SelectInput
+                                className="py-1 flex-grow self-stretch"
+                                id="searchByPriorityDropDown"
+                                value={selectedPriority || ""}
+                                onChange={(e) =>
+                                    setSelectedPriority(e.target.value)
+                                }
+                            >
+                                <option value="">Priority</option>
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="High">High</option>
+                                <option value="Urgent">Urgent</option>
+                            </SelectInput>
+                        )}
+                    </div>
+                    <div className="flex gap-x-4 flex-grow pb-4 sm:pb-0">
+                        <TextInput
+                            className="py-2 h-9 w-full flex-grow"
+                            id="searchBoxQuery"
+                            placeholder={placeholder}
+                            value={searchBoxQuery || ""}
+                            onChange={(e) => setSearchBoxQuery(e.target.value)}
+                            onKeyDown={handleKeyDown}
+                        />
+                        <PrimaryButton onClick={handleSearch} className="h-9">
+                            Search
+                        </PrimaryButton>
+                    </div>
                 </div>
-                <div className="flex gap-x-4 flex-grow justify-stretch">
-                    {(resourceType === "projects" ||
-                        resourceType === "tasks") && (
-                        <SelectInput
-                            className="py-1 flex-grow self-stretch"
-                            id="searchByStatusDropDown"
-                            value={selectedStatus || ""}
-                            onChange={(e) => setSelectedStatus(e.target.value)}
-                        >
-                            <option value="">Status</option>
-                            <option value="Pending">Pending</option>
-                            <option value="In Progress">In Progress</option>
-                            <option value="Completed">Completed</option>
-                        </SelectInput>
-                    )}
-                    {resourceType === "tasks" && (
-                        <SelectInput
-                            className="py-1 flex-grow self-stretch"
-                            id="searchByPriorityDropDown"
-                            value={selectedPriority || ""}
-                            onChange={(e) =>
-                                setSelectedPriority(e.target.value)
-                            }
-                        >
-                            <option value="">Priority</option>
-                            <option value="Low">Low</option>
-                            <option value="Medium">Medium</option>
-                            <option value="High">High</option>
-                            <option value="Urgent">Urgent</option>
-                        </SelectInput>
-                    )}
-                </div>
+                <Pagination
+                    nextPage={nextPage}
+                    previousPage={previousPage}
+                    className="mt-0 px-0 md:flex-grow-0"
+                />
             </div>
-            <Pagination
-                nextPage={nextPage}
-                previousPage={previousPage}
-                className="mt-0 px-0 md:flex-grow-0"
-            />
         </div>
     );
 }
