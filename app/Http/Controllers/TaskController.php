@@ -26,7 +26,11 @@ class TaskController extends Controller
             $query->where('priority', 'like', '%' . $priority . '%');
         }
 
-        $tasks = $query->simplePaginate(100);
+        $sortField = request('sortField', "id");
+
+        $sortDirection = request('sortDirection', "desc");
+
+        $tasks = $query->orderBy($sortField, $sortDirection)->simplePaginate(100);
 
         return inertia('Tasks/Index', [
             'tasks' => $tasks,

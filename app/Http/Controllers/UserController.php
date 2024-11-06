@@ -20,7 +20,11 @@ class UserController extends Controller
                 ->orwhere('last_name', 'like', '%' . $searchBox . '%'); // last_name is referring to the db column "last_name" in the projects table
         }
 
-        $users = $query->simplePaginate(20);
+        $sortField = request('sortField', "first_name");
+
+        $sortDirection = request('sortDirection', "asc");
+
+        $users = $query->orderBy($sortField, $sortDirection)->simplePaginate(20);
 
         return inertia('Users/Index', [
             'users' => $users,

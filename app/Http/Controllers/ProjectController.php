@@ -22,7 +22,11 @@ class ProjectController extends Controller
             $query->where('status', 'like', '%' . $status . '%');
         }
 
-        $projects = $query->simplePaginate(100);
+        $sortField = request('sortField', "id");
+
+        $sortDirection = request('sortDirection', "desc");
+
+        $projects = $query->orderBy($sortField, $sortDirection)->simplePaginate(100);
 
         return inertia('Projects/Index', [
             'projects' => $projects,
