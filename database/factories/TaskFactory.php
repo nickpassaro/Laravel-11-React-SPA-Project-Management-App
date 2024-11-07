@@ -22,10 +22,10 @@ class TaskFactory extends Factory
             'status' => fake()->randomElement(['Pending', 'In Progress', 'Completed']),
             'priority' => fake()->randomElement(['Low', 'Medium', 'High', 'Urgent']),
             'image_path' => fake()->imageUrl(),
-            'created_by' => fake()->numberBetween(1, 5),
-            'assigned_to' => fake()->numberBetween(6, 50),
-            'updated_by' => fake()->numberBetween(6, 50),
-            'project_id' => fake()->numberBetween(1, 30),
+            'created_by' => fake()->numberBetween(1, 20),
+            'assigned_to' => fake()->numberBetween(21, 200),
+            'updated_by' => fake()->numberBetween(21, 200),
+            'project_id' => fake()->numberBetween(1, 1000),
         ];
     }
 }
