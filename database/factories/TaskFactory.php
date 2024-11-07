@@ -17,7 +17,7 @@ class TaskFactory extends Factory
     public function definition(): array
     {
         return [
-            'description' => fake()->realTextBetween(250, 1000),
+            'description' => fake()->realTextBetween(50, 250),
             'due_date' => fake()->dateTimeBetween('now', '+1 year'),
             'status' => fake()->randomElement(['Pending', 'In Progress', 'Completed']),
             'priority' => fake()->randomElement(['Low', 'Medium', 'High', 'Urgent']),
