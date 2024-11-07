@@ -26,7 +26,7 @@ export default function Pagination({
 
     return (
         <nav
-            className={`flex flex-row-reverse justify-center md:justify-start gap-x-4 px-4 sm:px-0 ${className}`}
+            className={`flex flex-row-reverse justify-center md:justify-start gap-x-4 pr-4 sm:pr-6 lg:pr-8 ${className}`}
         >
             <div className="mx-0 my-0">
                 <PrimaryButton
