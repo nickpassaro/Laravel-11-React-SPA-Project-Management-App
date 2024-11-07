@@ -76,7 +76,7 @@ export default function SearchPlusPagination({
     return (
         <div className="mx-auto w-full">
             <div
-                className={`grid grid-rows-[auto_auto] grid-cols-1 sm:grid-rows-1 sm:grid-cols-[1fr_auto] md:grid-cols-[25rem_16rem] xl:grid-cols-[50rem_16rem] gap-x-16 gap-y-4 justify-between items-end sticky short:static top-0 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-gray-900 ${className}`}
+                className={`grid grid-rows-[auto_auto] grid-cols-1 sm:grid-rows-1 sm:grid-cols-[1fr_auto] md:grid-cols-[28.875rem_auto] lg:grid-cols-[37.5rem_auto] sm:gap-x-16 gap-y-4 justify-between items-end sticky short:static top-0 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-gray-900 ${className}`}
             >
                 <div className="border-b-2 border-gray-500 sm:border-b-0">
                     <div className="flex gap-x-4 pb-2 flex-grow justify-stretch">
