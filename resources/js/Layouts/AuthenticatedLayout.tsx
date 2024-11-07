@@ -22,7 +22,7 @@ export default function Authenticated({
 
             <main>
                 <div className="py-12">
-                    <div className={`mx-auto ${isTablePage === false ? 'max-w-7xl sm:px-6 lg:px-8' : ''} space-y-6`}>
+                    <div className={`mx-auto ${isTablePage === false ? 'max-w-7xl sm:px-6 lg:px-8 space-y-6' : ''}`}>
                         {children}
                     </div>
                 </div>

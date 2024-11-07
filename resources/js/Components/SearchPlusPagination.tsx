@@ -74,65 +74,61 @@ export default function SearchPlusPagination({
     };
 
     return (
-        <div className="mx-auto w-full">
-            <div
-                className={`grid grid-rows-[auto_auto] grid-cols-1 sm:grid-rows-1 sm:grid-cols-[1fr_auto] md:grid-cols-[28.875rem_auto] lg:grid-cols-[37.5rem_auto] sm:gap-x-16 gap-y-4 justify-between items-end sticky short:static top-0 pl-4 sm:pl-6 lg:pl-8 bg-gray-100 dark:bg-gray-900 ${className}`}
-            >
-                <div className="border-b-2 border-gray-500 sm:border-b-0">
-                    <div className="flex gap-x-4 pb-2 flex-grow justify-stretch">
-                        {(resourceType === "projects" ||
-                            resourceType === "tasks") && (
-                            <SelectInput
-                                className="py-1"
-                                id="searchByStatusDropDown"
-                                value={selectedStatus || ""}
-                                onChange={(e) =>
-                                    setSelectedStatus(e.target.value)
-                                }
-                            >
-                                <option value="">Status</option>
-                                <option value="Pending">Pending</option>
-                                <option value="In Progress">In Progress</option>
-                                <option value="Completed">Completed</option>
-                            </SelectInput>
-                        )}
-                        {resourceType === "tasks" && (
-                            <SelectInput
-                                className="py-1"
-                                id="searchByPriorityDropDown"
-                                value={selectedPriority || ""}
-                                onChange={(e) =>
-                                    setSelectedPriority(e.target.value)
-                                }
-                            >
-                                <option value="">Priority</option>
-                                <option value="Low">Low</option>
-                                <option value="Medium">Medium</option>
-                                <option value="High">High</option>
-                                <option value="Urgent">Urgent</option>
-                            </SelectInput>
-                        )}
-                    </div>
-                    <div className="flex gap-x-4 flex-grow pb-4 sm:pb-0">
-                        <TextInput
-                            className="py-2 h-9 w-full flex-grow"
-                            id="searchBoxQuery"
-                            placeholder={placeholder}
-                            value={searchBoxQuery || ""}
-                            onChange={(e) => setSearchBoxQuery(e.target.value)}
-                            onKeyDown={handleKeyDown}
-                        />
-                        <PrimaryButton onClick={handleSearch} className="h-9">
-                            Search
-                        </PrimaryButton>
-                    </div>
+        <div
+            className={`grid grid-rows-[auto_auto] grid-cols-1 sm:grid-rows-1 sm:grid-cols-[1fr_auto] md:grid-cols-[28.875rem_auto] lg:grid-cols-[37.5rem_auto] sm:gap-x-16 justify-between items-end sticky short:static top-0 sm:pl-6 lg:pl-8 -mt-12 pt-12 pb-6 bg-gray-100 dark:bg-gray-900 ${className}`}
+        >
+            <div className="mx-4 sm:mx-0 pb-4 sm:pb-0 md:pb-0 border-b-2 border-gray-500 sm:border-b-0">
+                <div className="flex gap-x-4 pb-2 flex-grow justify-stretch">
+                    {(resourceType === "projects" ||
+                        resourceType === "tasks") && (
+                        <SelectInput
+                            className="py-1"
+                            id="searchByStatusDropDown"
+                            value={selectedStatus || ""}
+                            onChange={(e) => setSelectedStatus(e.target.value)}
+                        >
+                            <option value="">Status</option>
+                            <option value="Pending">Pending</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Completed">Completed</option>
+                        </SelectInput>
+                    )}
+                    {resourceType === "tasks" && (
+                        <SelectInput
+                            className="py-1"
+                            id="searchByPriorityDropDown"
+                            value={selectedPriority || ""}
+                            onChange={(e) =>
+                                setSelectedPriority(e.target.value)
+                            }
+                        >
+                            <option value="">Priority</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                            <option value="Urgent">Urgent</option>
+                        </SelectInput>
+                    )}
                 </div>
-                <Pagination
-                    nextPage={nextPage}
-                    previousPage={previousPage}
-                    className="mt-0 px-0 md:flex-grow-0"
-                />
+                <div className="flex gap-x-4 flex-grow pb-2">
+                    <TextInput
+                        className="py-2 h-9 w-full flex-grow"
+                        id="searchBoxQuery"
+                        placeholder={placeholder}
+                        value={searchBoxQuery || ""}
+                        onChange={(e) => setSearchBoxQuery(e.target.value)}
+                        onKeyDown={handleKeyDown}
+                    />
+                    <PrimaryButton onClick={handleSearch} className="h-9">
+                        Search
+                    </PrimaryButton>
+                </div>
             </div>
+            <Pagination
+                nextPage={nextPage}
+                previousPage={previousPage}
+                className="mt-0 px-0 md:flex-grow-0"
+            />
         </div>
     );
 }
