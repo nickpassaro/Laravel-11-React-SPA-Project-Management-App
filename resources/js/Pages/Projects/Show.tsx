@@ -5,10 +5,10 @@ import PageSectionCard from "@/Components/PageSectionCard";
 
 export default function Show({
     project,
-    task,
+    tasks,
 }: {
     project: Project;
-    task: Task[];
+    tasks: Task[];
 }) {
     return (
         <AuthenticatedLayout header="Project Details">
@@ -20,12 +20,27 @@ export default function Show({
                 <p className="text-sm text-gray-600 dark:text-neutral-300 mb-8">
                     {project.description}
                 </p>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-neutral-100 mb-2">Tasks:</h3>
-                {project.tasks.map((task) => (
-                    <div key={task.id} className="mt-4">
-                        <li className="text-sm text-gray-600 dark:text-neutral-300">
-                            {task.description}
-                        </li>
+            </PageSectionCard>
+            <PageSectionCard>
+                {tasks.map((task) => (
+                    <div key={task.id}>
+                        <p>{task.id}</p>
+                        <p>{task.description}</p>
+                        <p>{new Date(task.due_date).toLocaleString()}</p>
+                        <p>{task.status}</p>
+                        <p>{task.priority}</p>
+                        <p>
+                            {task.created_by.first_name}{" "}
+                            {task.created_by.last_name}
+                        </p>
+                        <p>{task.assigned_to.first_name} </p>
+                        <p>{task.assigned_to.last_name}</p>
+                        <p>
+                            {task.updated_by.first_name}{" "}
+                            {task.updated_by.last_name}
+                        </p>
+                        <p>{new Date(task.created_at).toLocaleString()}</p>
+                        <p>{new Date(task.updated_at).toLocaleString()}</p>
                     </div>
                 ))}
             </PageSectionCard>
