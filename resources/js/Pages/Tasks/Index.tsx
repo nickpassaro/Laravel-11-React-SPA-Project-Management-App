@@ -63,7 +63,12 @@ export default function Index({
                         >
                             <TableCell>{task.id}</TableCell>
                             <TableCellTruncated>
-                                {task.description}
+                                <Link
+                                    href={route("projects.show", task.project.id)}
+                                    className="hover:text-gray-600 dark:hover:text-gray-400 hover:underline"
+                                >
+                                    {task.description}
+                                </Link>
                             </TableCellTruncated>
                             <TableCell>
                                 {new Date(task.due_date).toLocaleString()}

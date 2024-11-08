@@ -17,7 +17,7 @@ export default function Show({
                 <h2 className="text-xl font-bold text-gray-900 dark:text-neutral-100 mb-2">
                     {project.name}
                 </h2>
-                <p className="text-sm text-gray-600 dark:text-neutral-300 mb-8">
+                <p className="text-sm text-gray-600 dark:text-neutral-300">
                     {project.description}
                 </p>
             </PageSectionCard>
