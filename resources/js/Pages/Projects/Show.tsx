@@ -21,10 +21,12 @@ export default function Show({
                     {project.description}
                 </p>
             </PageSectionCard>
-            <PageSectionCard>
+            <PageSectionCard noPadding={true} noBg={true} noShadow={true}>
+                <h2 className="text-xl font-bold text-gray-900 dark:text-neutral-100 -mb-4 px-4">Tasks:</h2>
+            </PageSectionCard>
+            <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:sm:grid-cols-3 px-4 sm:px-0">
                 {tasks.map((task) => (
-                    <div key={task.id}>
-                        <p>{task.id}</p>
+                    <PageSectionCard key={task.id}>
                         <p>{task.description}</p>
                         <p>{new Date(task.due_date).toLocaleString()}</p>
                         <p>{task.status}</p>
@@ -33,17 +35,19 @@ export default function Show({
                             {task.created_by.first_name}{" "}
                             {task.created_by.last_name}
                         </p>
-                        <p>{task.assigned_to.first_name} </p>
-                        <p>{task.assigned_to.last_name}</p>
+                        <p>
+                            {task.assigned_to.first_name}{" "}
+                            {task.assigned_to.last_name}
+                        </p>
                         <p>
                             {task.updated_by.first_name}{" "}
                             {task.updated_by.last_name}
                         </p>
                         <p>{new Date(task.created_at).toLocaleString()}</p>
                         <p>{new Date(task.updated_at).toLocaleString()}</p>
-                    </div>
+                    </PageSectionCard>
                 ))}
-            </PageSectionCard>
+            </div>
         </AuthenticatedLayout>
     );
 }
