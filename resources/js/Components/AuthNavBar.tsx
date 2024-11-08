@@ -18,16 +18,7 @@ export default function AuthNavBar() {
                     {/* Logo and non-auth nav stuff */}
                     <div className="flex">
                         <div className="flex shrink-0 items-center space-x-4">
-                            <Link href={route("home")}>
-                                <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
-                            </Link>
-                            <NavLink
-                                href={route("home")}
-                                active={route().current("home")}
-                                className="hidden sm:inline-flex"
-                            >
-                                Home
-                            </NavLink>
+                            <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                             <NavLink
                                 href={route("projects.index")}
                                 active={
@@ -164,9 +155,6 @@ export default function AuthNavBar() {
                     </div>
 
                     <div className="mt-3 space-y-1">
-                        <ResponsiveNavLink href={route("home")}>
-                            Home
-                        </ResponsiveNavLink>
                         <ResponsiveNavLink href={route("projects.index")}>
                             Projects
                         </ResponsiveNavLink>

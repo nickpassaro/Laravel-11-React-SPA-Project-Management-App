@@ -6,7 +6,9 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\ProfileController;
 
-Route::get('/', fn() => Inertia::render('Home'))->name('home');
+Route::get('/', function () {
+    return redirect()->route('projects.index');
+});
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', fn() => Inertia::render('Dashboard'))->name('dashboard');

@@ -1,5 +1,4 @@
 import ApplicationLogo from "@/Components/ApplicationLogo";
-import { Link } from "@inertiajs/react";
 import { useState } from "react";
 import NavLink from "./NavLink";
 import ResponsiveNavLink from "./ResponsiveNavLink";
@@ -15,16 +14,7 @@ export default function GuestNavBar() {
                     {/* Logo and non-auth nav stuff */}
                     <div className="flex">
                         <div className="flex shrink-0 items-center space-x-4">
-                            <Link href={route("home")}>
-                                <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
-                            </Link>
-                            <NavLink
-                                href={route("home")}
-                                active={route().current("home")}
-                                className="hidden sm:inline-flex"
-                            >
-                                Home
-                            </NavLink>
+                            <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                         </div>
                     </div>
 
@@ -85,9 +75,6 @@ export default function GuestNavBar() {
                 }
             >
                 <div className="space-y-1">
-                    <ResponsiveNavLink href={route("home")}>
-                        Home
-                    </ResponsiveNavLink>
                     <ResponsiveNavLink href={route("login")}>
                         Log in
                     </ResponsiveNavLink>
