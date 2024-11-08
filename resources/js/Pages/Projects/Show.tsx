@@ -99,42 +99,38 @@ export default function Show({
                                         <span className="pl-1">Edit</span>
                                     </a>
                                 </p>
-                                {task.due_date && (
-                                    <form
-                                        action=""
-                                        className="hidden"
-                                        id={`due-date-form-${task.id}`}
-                                        onSubmit={(e) => {
-                                            e.preventDefault();
-                                            const dueDateInput =
-                                                document.getElementById(
-                                                    `due-date-input-${task.id}`
-                                                ) as HTMLInputElement;
-                                            if (dueDateInput) {
-                                                const newDueDate =
-                                                    dueDateInput.value;
-                                                // Handle the new due date value here
-                                            }
-                                        }}
+                                <form
+                                    action=""
+                                    className="hidden"
+                                    id={`due-date-form-${task.id}`}
+                                    onSubmit={(e) => {
+                                        e.preventDefault();
+                                        const dueDateInput =
+                                            document.getElementById(
+                                                `due-date-input-${task.id}`
+                                            ) as HTMLInputElement;
+                                        if (dueDateInput) {
+                                            const newDueDate =
+                                                dueDateInput.value;
+                                            // Handle the new due date value here
+                                        }
+                                    }}
+                                >
+                                    <input
+                                        type="datetime-local"
+                                        defaultValue={new Date(task.due_date)
+                                            .toISOString()
+                                            .slice(0, 16)}
+                                        className="mt-2 p-1 border border-gray-300 rounded-md text-sm"
+                                        id={`due-date-input-${task.id}`}
+                                    />
+                                    <button
+                                        type="submit"
+                                        className="mt-2 ml-2 px-2 py-1 bg-blue-500 text-white rounded-md text-sm"
                                     >
-                                        <input
-                                            type="datetime-local"
-                                            defaultValue={new Date(
-                                                task.due_date
-                                            )
-                                                .toISOString()
-                                                .slice(0, 16)}
-                                            className="mt-2 p-1 border border-gray-300 rounded-md text-sm"
-                                            id={`due-date-input-${task.id}`}
-                                        />
-                                        <button
-                                            type="submit"
-                                            className="mt-2 ml-2 px-2 py-1 bg-blue-500 text-white rounded-md text-sm"
-                                        >
-                                            Save
-                                        </button>
-                                    </form>
-                                )}
+                                        Save
+                                    </button>
+                                </form>
                             </div>
                             <div className="flex flex-row items-center">
                                 <form action="">
@@ -218,38 +214,36 @@ export default function Show({
                                         <span className="pl-1">Edit</span>
                                     </a>
                                 </p>
-                                {task.assigned_to && (
-                                    <form
-                                        action=""
-                                        className="hidden"
-                                        id={`assigned-to-form-${task.id}`}
-                                        onSubmit={(e) => {
-                                            e.preventDefault();
-                                            const assignedToInput =
-                                                document.getElementById(
-                                                    `assigned-to-input-${task.id}`
-                                                ) as HTMLInputElement;
-                                            if (assignedToInput) {
-                                                const newAssignee =
-                                                    assignedToInput.value;
-                                                // Handle the new assignee value here
-                                            }
-                                        }}
+                                <form
+                                    action=""
+                                    className="hidden"
+                                    id={`assigned-to-form-${task.id}`}
+                                    onSubmit={(e) => {
+                                        e.preventDefault();
+                                        const assignedToInput =
+                                            document.getElementById(
+                                                `assigned-to-input-${task.id}`
+                                            ) as HTMLInputElement;
+                                        if (assignedToInput) {
+                                            const newAssignee =
+                                                assignedToInput.value;
+                                            // Handle the new assignee value here
+                                        }
+                                    }}
+                                >
+                                    <input
+                                        type="text"
+                                        defaultValue={`${task.assigned_to.first_name} ${task.assigned_to.last_name}`}
+                                        className="mt-2 p-1 border border-gray-300 rounded-md text-sm"
+                                        id={`assigned-to-input-${task.id}`}
+                                    />
+                                    <button
+                                        type="submit"
+                                        className="mt-2 ml-2 px-2 py-1 bg-blue-500 text-white rounded-md text-sm"
                                     >
-                                        <input
-                                            type="text"
-                                            defaultValue={`${task.assigned_to.first_name} ${task.assigned_to.last_name}`}
-                                            className="mt-2 p-1 border border-gray-300 rounded-md text-sm"
-                                            id={`assigned-to-input-${task.id}`}
-                                        />
-                                        <button
-                                            type="submit"
-                                            className="mt-2 ml-2 px-2 py-1 bg-blue-500 text-white rounded-md text-sm"
-                                        >
-                                            Save
-                                        </button>
-                                    </form>
-                                )}
+                                        Save
+                                    </button>
+                                </form>
                             </div>
                             <p>
                                 Created By: {task.created_by.first_name}{" "}
