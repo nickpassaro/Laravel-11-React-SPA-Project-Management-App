@@ -48,32 +48,37 @@ export default function Show({
                             "project-form-3",
                             "project-form-4",
                         ];
-                        const submitForm = async (formId: string) => {
-                            const form = document.getElementById(
-                                formId
-                            ) as HTMLFormElement;
-                            const formData = new FormData(form);
+                        const nameInput = document.getElementById(
+                            "project-name-field"
+                        ) as HTMLInputElement;
+                        const descriptionInput = document.getElementById(
+                            "project-description-field"
+                        ) as HTMLTextAreaElement;
+                        const dueDateInput = document.getElementById(
+                            "project-due-date-field"
+                        ) as HTMLInputElement;
+                        const statusInput = document.getElementById(
+                            "project-status-field"
+                        ) as HTMLSelectElement;
 
-                            const response = await fetch(form.action, {
-                                method: form.method,
-                                body: formData,
-                            });
-
-                            return response.json();
-                        };
-
-                        const submitForms = async () => {
-                            try {
-                                for (const formId of formIds) {
-                                    await submitForm(formId);
-                                }
-                                console.log("Forms submitted successfully");
-                            } catch (error) {
-                                console.error("Error submitting forms:", error);
-                            }
-                        };
-
-                        submitForms();
+                        if (nameInput) {
+                            console.log("Project Name:", nameInput.value);
+                        }
+                        if (descriptionInput) {
+                            console.log(
+                                "Project Description:",
+                                descriptionInput.value
+                            );
+                        }
+                        if (dueDateInput) {
+                            console.log(
+                                "Project Due Date:",
+                                dueDateInput.value
+                            );
+                        }
+                        if (statusInput) {
+                            console.log("Project Status:", statusInput.value);
+                        }
                     }}
                 >
                     Save
@@ -282,6 +287,7 @@ export default function Show({
                                         href="#"
                                         className="text-blue-500 underline"
                                         onClick={(e) => {
+                                            e.preventDefault();
                                             const target =
                                                 e.target as HTMLElement;
                                             target.textContent =
@@ -306,7 +312,8 @@ export default function Show({
                                     action=""
                                     className="hidden"
                                     id={`due-date-form-${task.id}`}
-                                    onSubmit={() => {
+                                    onSubmit={(e) => {
+                                        e.preventDefault();
                                         const dueDateInput =
                                             document.getElementById(
                                                 `due-date-input-${task.id}`
@@ -349,7 +356,8 @@ export default function Show({
                                         name={`status-${task.id}`}
                                         className="inline pl-2 pr-8 py-0 text-xs border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 rounded-md flex-grow-0"
                                         defaultValue={task.status}
-                                        onChange={() => {
+                                        onChange={(e) => {
+                                            e.preventDefault();
                                             const statusInput =
                                                 document.getElementById(
                                                     `project-status-field`
@@ -386,7 +394,8 @@ export default function Show({
                                         name={`priority-${task.id}`}
                                         className="inline pl-2 pr-8 py-0 text-xs border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 rounded-md flex-grow-0"
                                         defaultValue={task.priority}
-                                        onChange={() => {
+                                        onChange={(e) => {
+                                            e.preventDefault();
                                             const priorityInput =
                                                 document.getElementById(
                                                     `project-priority-field`
@@ -415,6 +424,7 @@ export default function Show({
                                         href="#"
                                         className="text-blue-500 underline"
                                         onClick={(e) => {
+                                            e.preventDefault();
                                             const target =
                                                 e.target as HTMLElement;
                                             target.textContent =
@@ -439,7 +449,8 @@ export default function Show({
                                     action=""
                                     className="hidden"
                                     id={`assigned-to-form-${task.id}`}
-                                    onSubmit={() => {
+                                    onSubmit={(e) => {
+                                        e.preventDefault();
                                         const assignedToInput =
                                             document.getElementById(
                                                 `assigned-to-input-${task.id}`
@@ -447,7 +458,7 @@ export default function Show({
                                         if (assignedToInput) {
                                             const newAssignee =
                                                 assignedToInput.value;
-                                            // Handle the new assignee value here
+                                            console.log(newAssignee);
                                         }
                                     }}
                                 >
