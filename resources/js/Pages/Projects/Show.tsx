@@ -48,14 +48,32 @@ export default function Show({
                             "project-form-3",
                             "project-form-4",
                         ];
-                        formIds.forEach((formId) => {
+                        const submitForm = async (formId: string) => {
                             const form = document.getElementById(
                                 formId
                             ) as HTMLFormElement;
-                            if (form) {
-                                form.submit();
+                            const formData = new FormData(form);
+
+                            const response = await fetch(form.action, {
+                                method: form.method,
+                                body: formData,
+                            });
+
+                            return response.json();
+                        };
+
+                        const submitForms = async () => {
+                            try {
+                                for (const formId of formIds) {
+                                    await submitForm(formId);
+                                }
+                                console.log("Forms submitted successfully");
+                            } catch (error) {
+                                console.error("Error submitting forms:", error);
                             }
-                        });
+                        };
+
+                        submitForms();
                     }}
                 >
                     Save
