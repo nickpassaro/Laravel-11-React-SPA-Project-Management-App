@@ -187,12 +187,18 @@ export default function Show({
                                 }
                             }}
                         >
+                            <label
+                                htmlFor="project-due-date-field"
+                                className="inline flex-grow-0 text-sm"
+                            >
+                                <span className="pr-1">Due:</span>
+                            </label>
                             <input
                                 type="datetime-local"
                                 defaultValue={new Date(project.due_date)
                                     .toISOString()
                                     .slice(0, 16)}
-                                className="p-1 border border-gray-300 rounded-md text-sm w-full"
+                                className="p-1 border border-gray-300 rounded-md text-sm"
                                 id="project-due-date-field"
                             />
                         </form>
@@ -213,14 +219,14 @@ export default function Show({
                             }}
                         >
                             <label
-                                htmlFor="project-due-date-field"
-                                className="inline flex-grow-0"
+                                htmlFor="project-status-field"
+                                className="inline flex-grow-0 text-sm"
                             >
                                 <span className="pr-1">Status:</span>
                             </label>
                             <select
-                                id="project-due-date-field"
-                                name="project-due-date-field"
+                                id="project-status-field"
+                                name="project-status-field"
                                 className="inline pl-2 pr-8 py-0 text-xs border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 rounded-md flex-grow-0"
                                 defaultValue={project.status}
                             >
@@ -358,15 +364,10 @@ export default function Show({
                                         defaultValue={task.status}
                                         onChange={(e) => {
                                             e.preventDefault();
-                                            const statusInput =
-                                                document.getElementById(
-                                                    `project-status-field`
-                                                ) as HTMLSelectElement;
-                                            if (statusInput) {
-                                                const newStatus =
-                                                    statusInput.value;
-                                                console.log(newStatus);
-                                            }
+                                            const newStatus = (
+                                                e.target as HTMLSelectElement
+                                            ).value;
+                                            console.log(newStatus);
                                         }}
                                     >
                                         <option value="Pending">Pending</option>
@@ -396,15 +397,10 @@ export default function Show({
                                         defaultValue={task.priority}
                                         onChange={(e) => {
                                             e.preventDefault();
-                                            const priorityInput =
-                                                document.getElementById(
-                                                    `project-priority-field`
-                                                ) as HTMLSelectElement;
-                                            if (priorityInput) {
-                                                const newPriority =
-                                                    priorityInput.value;
-                                                console.log(newPriority);
-                                            }
+                                            const newPriority = (
+                                                e.target as HTMLSelectElement
+                                            ).value;
+                                            console.log(newPriority);
                                         }}
                                     >
                                         <option value="Low">Low</option>
