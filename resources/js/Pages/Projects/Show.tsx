@@ -155,7 +155,7 @@ export default function Show({
                     </div>
 
                     {/* right side */}
-                    <div className="grid gap-2 my-4 sm:gap-4 sm:grid-cols-[auto_auto_1fr] sm:border-y-2 sm:py-2 lg:grid-rows-3 lg:grid-cols-1 lg:gap-0 lg:border-y-0 lg:my-0 lg:py-0 lg:items-start">
+                    <div className="grid gap-2 sm:grid-cols-2 sm:grid-rows-2 sm:grid-flow-col-dense lg:grid-rows-3 lg:grid-cols-1 lg:gap-2 lg:border-y-0 lg:self-start">
                         {/* project due date */}
                         <p
                             className="text-sm dark:text-neutral-300"
