@@ -59,20 +59,17 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        $sortField = request('sortField', 'id');
-
-        $sortDirection = request('sortDirection', 'asc');
-
-        $project->load(['tasks' => function ($query) use ($sortField, $sortDirection) {
-            $query->orderBy($sortField, $sortDirection)
-              ->with(['createdBy', 'updatedBy', 'assignedTo']);
-        }]);
+        $project->load([
+            'createdBy',
+            'updatedBy',
+            'tasks' => function ($query) {
+                $query->with(['createdBy', 'updatedBy', 'assignedTo']);
+            }
+        ]);
 
         return inertia('Projects/Show', [
             'project' => $project,
             'tasks' => $project->tasks,
-            'sortField' => $sortField,
-            'sortDirection' => $sortDirection,
         ]);
     }
 
