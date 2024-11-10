@@ -78,7 +78,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        // Editing happens inline on the show page, so we don't need the edit method.
     }
 
     /**
@@ -86,7 +86,17 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $project->update($request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'due_date' => 'required',
+            'status' => 'required',
+        ]));
+
+        return inertia('Projects/Show', [
+            'project' => $project,
+            'tasks' => $project->tasks,
+        ]);
     }
 
     /**
@@ -94,6 +104,9 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        // Delete related tasks first to avoid foreign key constraint violation
+        $project->tasks()->delete();
+        $project->delete();
+        return redirect()->route('projects.index')->with('success', 'Project deleted successfully');
     }
 }

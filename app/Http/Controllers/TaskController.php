@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -77,9 +78,18 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Task $task)
+    public function update(Request $request, Task $task, Project $project)
     {
-        //
+        $task->update($request->validate([
+            'due_date' => 'required',
+            'status' => 'required',
+            'priority' => 'required',
+        ]));
+
+        return inertia('Projects/Show', [
+            'project' => $project,
+            'tasks' => $project->tasks,
+        ]);
     }
 
     /**

@@ -10,6 +10,17 @@ class Task extends Model
     /** @use HasFactory<\Database\Factories\TaskFactory> */
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'due_date',
+        'status',
+        'priority',
+    ];
+
     public function createdBy()
     {
         return $this->belongsTo(User::class, 'created_by');

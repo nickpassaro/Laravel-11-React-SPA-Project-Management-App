@@ -10,6 +10,18 @@ class Project extends Model
     /** @use HasFactory<\Database\Factories\ProjectFactory> */
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+        'description',
+        'due_date',
+        'status',
+    ];
+
     public function createdBy()
     {
         return $this->belongsTo(User::class, 'created_by');
