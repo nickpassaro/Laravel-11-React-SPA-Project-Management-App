@@ -7,11 +7,11 @@ import { useState } from "react";
 export default function Show({
     project,
     tasks,
-    updated_by,
+    curr_user_id,
 }: {
     project: Project;
     tasks: Task[];
-    updated_by: number;
+    curr_user_id: number;
 }) {
     const [isEditingProject, setIsEditingProject] = useState(false);
 
@@ -38,7 +38,7 @@ export default function Show({
             description: descriptionInput.value,
             due_date: dueDateInput.value,
             status: statusInput.value,
-            updated_by: updated_by,
+            updated_by: curr_user_id,
         });
 
         handleEditToggle();
@@ -48,10 +48,32 @@ export default function Show({
         <AuthenticatedLayout header="Project Details">
             <Head title={`Project Name: ${project.name}`} />
 
-            <div className="flex justify-end gap-x-2">
+            <div className="flex justify-end gap-x-8">
                 <a
                     href="#"
-                    className="block text-blue-500 underline px-4 mt-0"
+                    className={`text-red-500 underline mt-0 ${
+                        isEditingProject ? "" : "hidden"
+                    }`}
+                    id="delete-project"
+                    onClick={(e) => {
+                        e.preventDefault();
+                        if (
+                            confirm(
+                                "Are you sure you want to delete this project?"
+                            )
+                        ) {
+                            router.delete(
+                                route("projects.destroy", project.id)
+                            );
+                        }
+                    }}
+                >
+                    Delete
+                </a>
+
+                <a
+                    href="#"
+                    className="block text-blue-500 underline mt-0"
                     onClick={(e) => {
                         e.preventDefault();
                         handleEditToggle();
@@ -73,28 +95,6 @@ export default function Show({
                 >
                     Save
                 </button>
-
-                <a
-                    href="#"
-                    className={`text-red-500 underline px-4 mt-0 ${
-                        isEditingProject ? "" : "hidden"
-                    }`}
-                    id="delete-project"
-                    onClick={(e) => {
-                        e.preventDefault();
-                        if (
-                            confirm(
-                                "Are you sure you want to delete this project?"
-                            )
-                        ) {
-                            router.delete(
-                                route("projects.destroy", project.id)
-                            );
-                        }
-                    }}
-                >
-                    Delete
-                </a>
             </div>
 
             <PageSectionCard>
@@ -282,7 +282,7 @@ export default function Show({
                                                 {
                                                     due_date:
                                                         dueDateInput.value,
-                                                    updated_by: updated_by,
+                                                    updated_by: curr_user_id,
                                                 },
                                                 {
                                                     onSuccess: () => {
@@ -361,7 +361,8 @@ export default function Show({
                                                     ),
                                                     {
                                                         status: statusInput.value,
-                                                        updated_by: updated_by,
+                                                        updated_by:
+                                                            curr_user_id,
                                                     },
                                                     {
                                                         onSuccess: () => {
@@ -425,7 +426,8 @@ export default function Show({
                                                     {
                                                         priority:
                                                             priorityInput.value,
-                                                        updated_by: updated_by,
+                                                        updated_by:
+                                                            curr_user_id,
                                                     },
                                                     {
                                                         onSuccess: () => {
@@ -480,15 +482,33 @@ export default function Show({
                                     className="text-red-500 underline"
                                     onClick={(e) => {
                                         e.preventDefault();
-                                        if (confirm("Are you sure you want to delete this task?")) {
-                                            router.delete(route("tasks.destroy", task.id), {
-                                                onSuccess: () => {
-                                                    router.get(route("projects.show", { project: project.id }));
-                                                },
-                                                onError: (error) => {
-                                                    console.error("Error deleting task:", error);
-                                                },
-                                            });
+                                        if (
+                                            confirm(
+                                                "Are you sure you want to delete this task?"
+                                            )
+                                        ) {
+                                            router.delete(
+                                                route("tasks.destroy", task.id),
+                                                {
+                                                    onSuccess: () => {
+                                                        router.get(
+                                                            route(
+                                                                "projects.show",
+                                                                {
+                                                                    project:
+                                                                        project.id,
+                                                                }
+                                                            )
+                                                        );
+                                                    },
+                                                    onError: (error) => {
+                                                        console.error(
+                                                            "Error deleting task:",
+                                                            error
+                                                        );
+                                                    },
+                                                }
+                                            );
                                         }
                                     }}
                                 >

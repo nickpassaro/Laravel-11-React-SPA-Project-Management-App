@@ -49,9 +49,25 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Project $project)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'due_date' => 'required|date',
+            'status' => 'required|string',
+        ]);
+
+        $createdProject = $project::create([
+            'name' => $validatedData['name'],
+            'description' => $validatedData['description'],
+            'due_date' => $validatedData['due_date'],
+            'status' => $validatedData['status'],
+            'created_by' => auth()->id(),
+            'updated_by' => auth()->id(),
+        ]);
+
+        return redirect()->route('projects.show', $createdProject);
     }
 
     /**
@@ -70,7 +86,7 @@ class ProjectController extends Controller
         return inertia('Projects/Show', [
             'project' => $project,
             'tasks' => $project->tasks,
-            'updated_by' => auth()->id(),
+            'curr_user_id' => auth()->id(),
         ]);
     }
 
@@ -117,6 +133,6 @@ class ProjectController extends Controller
         // Delete related tasks first to avoid foreign key constraint violation
         $project->tasks()->delete();
         $project->delete();
-        return redirect()->route('projects.index')->with('success', 'Project deleted successfully');
+        return redirect()->route('projects.index');
     }
 }

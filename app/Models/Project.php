@@ -21,6 +21,7 @@ class Project extends Model
         'due_date',
         'status',
         'updated_by',
+        'created_by',
     ];
 
     public function createdBy()
