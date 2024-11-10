@@ -21,7 +21,6 @@ class ProjectFactory extends Factory
             'description' => fake()->realTextBetween(250, 1000),
             'due_date' => fake()->dateTimeBetween('now', '+1 year'),
             'status' => fake()->randomElement(['Pending', 'In Progress', 'Completed']),
-            'image_path' => fake()->imageUrl(),
             'created_by' => fake()->numberBetween(1, 20),
             'updated_by' => fake()->numberBetween(21, 200),
         ];

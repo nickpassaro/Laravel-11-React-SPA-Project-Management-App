@@ -16,7 +16,6 @@ export type Project = {
     description: string;
     due_date: string;
     status: string;
-    image_path: string;
     created_by: User;
     updated_by: User;
     created_at: string;
@@ -31,7 +30,6 @@ export type Task = {
     due_date: string;
     status: string;
     priority: string;
-    image_path: string;
     created_by: User;
     assigned_to: User;
     updated_by: User;
