@@ -474,6 +474,27 @@ export default function Show({
                                 Updated At:{" "}
                                 {new Date(task.updated_at).toLocaleString()}
                             </p>
+                            <p>
+                                <a
+                                    href="#"
+                                    className="text-red-500 underline"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        if (confirm("Are you sure you want to delete this task?")) {
+                                            router.delete(route("tasks.destroy", task.id), {
+                                                onSuccess: () => {
+                                                    router.get(route("projects.show", { project: project.id }));
+                                                },
+                                                onError: (error) => {
+                                                    console.error("Error deleting task:", error);
+                                                },
+                                            });
+                                        }
+                                    }}
+                                >
+                                    Delete
+                                </a>
+                            </p>
                         </div>
                     </PageSectionCard>
                 ))}
