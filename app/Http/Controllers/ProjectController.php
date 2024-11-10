@@ -70,6 +70,7 @@ class ProjectController extends Controller
         return inertia('Projects/Show', [
             'project' => $project,
             'tasks' => $project->tasks,
+            'updated_by' => auth()->id(),
         ]);
     }
 
@@ -91,6 +92,7 @@ class ProjectController extends Controller
             'description' => 'required',
             'due_date' => 'required',
             'status' => 'required',
+            'updated_by' => 'required',
         ]));
 
         $project->load([

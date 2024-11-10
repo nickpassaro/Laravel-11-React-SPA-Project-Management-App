@@ -7,9 +7,11 @@ import { useState } from "react";
 export default function Show({
     project,
     tasks,
+    updated_by,
 }: {
     project: Project;
     tasks: Task[];
+    updated_by: number;
 }) {
     const [isEditingProject, setIsEditingProject] = useState(false);
 
@@ -36,6 +38,7 @@ export default function Show({
             description: descriptionInput.value,
             due_date: dueDateInput.value,
             status: statusInput.value,
+            updated_by: updated_by,
         });
 
         handleEditToggle();
@@ -279,6 +282,7 @@ export default function Show({
                                                 {
                                                     due_date:
                                                         dueDateInput.value,
+                                                    updated_by: updated_by,
                                                 },
                                                 {
                                                     onSuccess: () => {
@@ -357,6 +361,7 @@ export default function Show({
                                                     ),
                                                     {
                                                         status: statusInput.value,
+                                                        updated_by: updated_by,
                                                     },
                                                     {
                                                         onSuccess: () => {
@@ -420,6 +425,7 @@ export default function Show({
                                                     {
                                                         priority:
                                                             priorityInput.value,
+                                                        updated_by: updated_by,
                                                     },
                                                     {
                                                         onSuccess: () => {

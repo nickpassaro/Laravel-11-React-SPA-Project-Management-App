@@ -19,6 +19,7 @@ class Task extends Model
         'due_date',
         'status',
         'priority',
+        'updated_by',
     ];
 
     public function createdBy()

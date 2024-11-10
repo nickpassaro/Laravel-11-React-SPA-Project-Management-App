@@ -83,6 +83,7 @@ class TaskController extends Controller
             'due_date' => 'nullable',
             'status' => 'nullable',
             'priority' => 'nullable',
+            'updated_by' => 'required',
         ]));
     }
 
