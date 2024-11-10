@@ -238,7 +238,7 @@ export default function Show({
                             <div>
                                 <p>
                                     Due:{" "}
-                                    {new Date(task.due_date).toLocaleString()}{" "}
+                                    {new Date(task.due_date).toLocaleString()}
                                     <a
                                         href="#"
                                         className="text-blue-500 underline"
@@ -275,13 +275,29 @@ export default function Show({
                                             ) as HTMLInputElement;
                                         if (dueDateInput) {
                                             router.put(
-                                                route("tasks.update", {
-                                                    task: task.id,
-                                                    project: project.id,
-                                                }),
+                                                route("tasks.update", task.id),
                                                 {
                                                     due_date:
                                                         dueDateInput.value,
+                                                },
+                                                {
+                                                    onSuccess: () => {
+                                                        router.get(
+                                                            route(
+                                                                "projects.show",
+                                                                {
+                                                                    project:
+                                                                        project.id,
+                                                                }
+                                                            )
+                                                        );
+                                                    },
+                                                    onError: (error) => {
+                                                        console.error(
+                                                            "Error updating task:",
+                                                            error
+                                                        );
+                                                    },
                                                 }
                                             );
                                         }
@@ -317,14 +333,14 @@ export default function Show({
                             <div className="flex flex-row items-center">
                                 <form>
                                     <label
-                                        htmlFor={`status-${task.id}`}
+                                        htmlFor={`status-input-${task.id}`}
                                         className="inline flex-grow-0"
                                     >
                                         <span className="pr-1">Status:</span>
                                     </label>
                                     <select
-                                        id={`status-${task.id}`}
-                                        name={`status-${task.id}`}
+                                        id={`status-input-${task.id}`}
+                                        name={`status-input-${task.id}`}
                                         className="inline pl-2 pr-8 py-0 text-xs border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 rounded-md flex-grow-0"
                                         defaultValue={task.status}
                                         onChange={(e) => {
@@ -335,12 +351,31 @@ export default function Show({
                                                 ) as HTMLInputElement;
                                             if (statusInput) {
                                                 router.put(
-                                                    route("tasks.update", {
-                                                        task: task.id,
-                                                        project: project.id,
-                                                    }),
+                                                    route(
+                                                        "tasks.update",
+                                                        task.id
+                                                    ),
                                                     {
                                                         status: statusInput.value,
+                                                    },
+                                                    {
+                                                        onSuccess: () => {
+                                                            router.get(
+                                                                route(
+                                                                    "projects.show",
+                                                                    {
+                                                                        project:
+                                                                            project.id,
+                                                                    }
+                                                                )
+                                                            );
+                                                        },
+                                                        onError: (error) => {
+                                                            console.error(
+                                                                "Error updating task:",
+                                                                error
+                                                            );
+                                                        },
                                                     }
                                                 );
                                             }
@@ -360,14 +395,14 @@ export default function Show({
                             <div className="flex flex-row items-center">
                                 <form>
                                     <label
-                                        htmlFor={`priority-${task.id}`}
+                                        htmlFor={`priority-input-${task.id}`}
                                         className="inline flex-grow-0"
                                     >
                                         <span className="pr-1">Priority:</span>
                                     </label>
                                     <select
-                                        id={`priority-${task.id}`}
-                                        name={`priority-${task.id}`}
+                                        id={`priority-input-${task.id}`}
+                                        name={`priority-input-${task.id}`}
                                         className="inline pl-2 pr-8 py-0 text-xs border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 rounded-md flex-grow-0"
                                         defaultValue={task.priority}
                                         onChange={(e) => {
@@ -378,13 +413,32 @@ export default function Show({
                                                 ) as HTMLInputElement;
                                             if (priorityInput) {
                                                 router.put(
-                                                    route("tasks.update", {
-                                                        task: task.id,
-                                                        project: project.id,
-                                                    }),
+                                                    route(
+                                                        "tasks.update",
+                                                        task.id
+                                                    ),
                                                     {
                                                         priority:
                                                             priorityInput.value,
+                                                    },
+                                                    {
+                                                        onSuccess: () => {
+                                                            router.get(
+                                                                route(
+                                                                    "projects.show",
+                                                                    {
+                                                                        project:
+                                                                            project.id,
+                                                                    }
+                                                                )
+                                                            );
+                                                        },
+                                                        onError: (error) => {
+                                                            console.error(
+                                                                "Error updating task:",
+                                                                error
+                                                            );
+                                                        },
                                                     }
                                                 );
                                             }

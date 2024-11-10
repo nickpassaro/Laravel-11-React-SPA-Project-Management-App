@@ -93,6 +93,14 @@ class ProjectController extends Controller
             'status' => 'required',
         ]));
 
+        $project->load([
+            'createdBy',
+            'updatedBy',
+            'tasks' => function ($query) {
+                $query->with(['createdBy', 'updatedBy', 'assignedTo']);
+            }
+        ]);
+
         return inertia('Projects/Show', [
             'project' => $project,
             'tasks' => $project->tasks,
