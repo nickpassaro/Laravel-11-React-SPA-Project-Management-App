@@ -143,7 +143,7 @@ export default function Edit({
                         <div className="flex flex-col justify-between items-end">
                             <button
                                 type="submit"
-                                className="mt-6 p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                                className="mt-6 mb-4 p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
                                 disabled={processing}
                             >
                                 Update Project

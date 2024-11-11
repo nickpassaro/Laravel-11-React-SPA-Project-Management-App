@@ -178,7 +178,7 @@ export default function Show({
                         <div className="space-y-2">
                             {editingTaskId === task.id ? (
                                 <textarea
-                                    className="p-1 border rounded-md w-full h-32 text-sm"
+                                    className="p-1 border rounded-md w-full h-32 text-sm border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:focus:border-indigo-600 dark:focus:ring-indigo-600"
                                     value={task.description}
                                     onChange={(e) =>
                                         handleTaskInputChange(
@@ -208,7 +208,7 @@ export default function Show({
                                                 e.target.value
                                             )
                                         }
-                                        className="border px-2 py-0 rounded-md text-sm"
+                                        className="border px-2 py-0 rounded-md text-sm border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:focus:border-indigo-600 dark:focus:ring-indigo-600"
                                     />
                                 ) : (
                                     new Date(task.due_date).toLocaleString()
@@ -226,7 +226,7 @@ export default function Show({
                                                 e.target.value
                                             )
                                         }
-                                        className="border px-2 py-0 pr-10 rounded-md text-sm"
+                                        className="border px-2 py-0 pr-10 rounded-md text-sm border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:focus:border-indigo-600 dark:focus:ring-indigo-600"
                                     >
                                         <option value="Pending">Pending</option>
                                         <option value="In Progress">
@@ -252,7 +252,7 @@ export default function Show({
                                                 e.target.value
                                             )
                                         }
-                                        className="border px-2 py-0 pr-10 rounded-md text-sm"
+                                        className="border px-2 py-0 pr-10 rounded-md text-sm border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:focus:border-indigo-600 dark:focus:ring-indigo-600"
                                     >
                                         <option value="Low">Low</option>
                                         <option value="Medium">Medium</option>
