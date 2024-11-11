@@ -31,7 +31,6 @@ export type Task = {
     status: string;
     priority: string;
     created_by: User;
-    assigned_to: User;
     updated_by: User;
     project: Project;
     created_at: string;

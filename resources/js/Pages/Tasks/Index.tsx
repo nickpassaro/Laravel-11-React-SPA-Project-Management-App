@@ -46,7 +46,6 @@ export default function Index({
                         { label: "Status", key: "status" },
                         { label: "Priority", key: "priority" },
                         { label: "Created By", key: "created_by" },
-                        { label: "Assigned To", key: "assigned_to" },
                         { label: "Updated By", key: "updated_by" },
                         { label: "Project ID", key: "project_id" },
                         { label: "Created At", key: "created_at" },
@@ -78,10 +77,6 @@ export default function Index({
                             <TableCellTruncated>
                                 {task.created_by.first_name}{" "}
                                 {task.created_by.last_name}
-                            </TableCellTruncated>
-                            <TableCellTruncated>
-                                {task.assigned_to.first_name}{" "}
-                                {task.assigned_to.last_name}
                             </TableCellTruncated>
                             <TableCellTruncated>
                                 {task.updated_by.first_name}{" "}

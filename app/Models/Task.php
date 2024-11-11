@@ -16,20 +16,18 @@ class Task extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'description',
         'due_date',
         'status',
         'priority',
+        'created_by',
         'updated_by',
+        'project_id',
     ];
 
     public function createdBy()
     {
         return $this->belongsTo(User::class, 'created_by');
-    }
-
-    public function assignedTo()
-    {
-        return $this->belongsTo(User::class, 'assigned_to');
     }
 
     public function updatedBy()

@@ -17,7 +17,6 @@ return new class extends Migration {
             $table->enum('status', ['Pending', 'In Progress', 'Completed']);
             $table->enum('priority', ['Low', 'Medium', 'High', 'Urgent']);
             $table->foreignId('created_by')->constrained('users');
-            $table->foreignId('assigned_to')->constrained('users');
             $table->foreignId('updated_by')->constrained('users');
             $table->foreignId('project_id')->constrained('projects');
             $table->timestamps();
