@@ -79,13 +79,13 @@ class ProjectController extends Controller
             'createdBy',
             'updatedBy',
             'tasks' => function ($query) {
-                $query->with(['createdBy', 'updatedBy', 'assignedTo']);
+                $query->with(['createdBy', 'updatedBy']);
             }
         ]);
 
         return inertia('Projects/Show', [
             'project' => $project,
-            'tasks' => $project->tasks()->with(['createdBy', 'updatedBy', 'assignedTo'])->orderBy('id', 'desc')->get(),
+            'tasks' => $project->tasks()->with(['createdBy', 'updatedBy'])->orderBy('id', 'desc')->get(),
         ]);
     }
 
@@ -123,7 +123,7 @@ class ProjectController extends Controller
             'createdBy',
             'updatedBy',
             'tasks' => function ($query) {
-                $query->with(['createdBy', 'updatedBy', 'assignedTo']);
+                $query->with(['createdBy', 'updatedBy']);
             }
         ]);
 

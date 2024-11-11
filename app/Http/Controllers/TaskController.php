@@ -12,7 +12,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $query = Task::with(['createdBy', 'assignedTo', 'updatedBy', 'project']);
+        $query = Task::with(['createdBy', 'updatedBy', 'project']);
 
         if ($searchBox = request('searchBox')) {
             $query->where('description', 'like', '%' . $searchBox . '%'); // description is referring to the db column "description" in the projects table

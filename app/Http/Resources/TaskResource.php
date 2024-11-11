@@ -22,7 +22,6 @@ class TaskResource extends JsonResource
             'status' => $this->status,
             'priority' => $this->priority,
             'createdBy' => new UserResource($this->createdBy), // this column points to a user in the users table
-            'assignedTo' => new UserResource($this->assignedTo), // this column points to a user in the users table
             'updatedBy' => new UserResource($this->updatedBy), // this column points to a user in the users table
             'projectid' => new ProjectResource($this->projectid), // this column points to a user in the projects table
             'created_at' => $this->created_at,
