@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -53,16 +54,18 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Task $task)
+    public function store(Request $request, Project $project)
     {
+        $project_id = $request->input('project_id');
+
         Task::create([
-            'description' => request('description', 'No description'),
-            'due_date' => request('due_date', now()->addWeek()),
+            'description' => 'No description.',
+            'due_date' => now(),
             'status' => 'Pending',
             'priority' => 'Low',
             'created_by' => auth()->id(),
             'updated_by' => auth()->id(),
-            'project_id' => request('project_id'),
+            'project_id' => $project_id,
         ]);
     }
 

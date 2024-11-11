@@ -23,12 +23,12 @@ export default function Show({
         field: string,
         value: string
     ) => {
-        const currentDate = new Date().toISOString(); // Get the current date in ISO format
+        const currentDate = new Date().toISOString();
 
         setEditedTasks((prevTasks) =>
             prevTasks.map((task) =>
                 task.id === taskId
-                    ? { ...task, [field]: value, updated_at: currentDate } // Add updated_at field with current date
+                    ? { ...task, [field]: value, updated_at: currentDate }
                     : task
             )
         );
@@ -38,7 +38,6 @@ export default function Show({
         const updatedTask = editedTasks.find((task) => task.id === taskId);
 
         if (updatedTask) {
-            // Create a payload that excludes nested objects
             const payload = {
                 id: updatedTask.id,
                 description: updatedTask.description,
@@ -46,13 +45,12 @@ export default function Show({
                 status: updatedTask.status,
                 priority: updatedTask.priority,
                 updated_at: updatedTask.updated_at,
-                // Exclude fields like created_by or updated_by
             };
 
             router.put(route("tasks.update", taskId), payload, {
                 onSuccess: () => {
-                    console.log("Task updated successfully");
                     setEditingTaskId(null);
+                    router.get(route("projects.show", project.id));
                 },
                 onError: (errors) => {
                     console.error("Failed to update task:", errors);
@@ -66,6 +64,34 @@ export default function Show({
         setEditingTaskId(null);
     };
 
+    const handleTaskCreate = () => {
+        const payload = {
+            project_id: project.id,
+        };
+
+        router.post(route("tasks.store"), payload, {
+            onSuccess: () => {
+                router.get(route("projects.show", project.id));
+            },
+            onError: (errors) => {
+                console.error("Failed to create task:", errors);
+            },
+        });
+    };
+
+    const handleTaskDelete = (taskId: number) => {
+        router.delete(route("tasks.destroy", taskId), {
+            onSuccess: () => {
+                setEditedTasks((prevTasks) =>
+                    prevTasks.filter((task) => task.id !== taskId)
+                );
+            },
+            onError: (errors) => {
+                console.error("Failed to delete task:", errors);
+            },
+        });
+    };
+
     return (
         <AuthenticatedLayout header="Project Details">
             <Head title={`Project Name: ${project.name}`} />
@@ -73,7 +99,7 @@ export default function Show({
             <div className="flex justify-end mb-4">
                 <Link
                     href={route("projects.edit", project.id)}
-                    className="text-blue-500 hover:underline"
+                    className="text-blue-500 hover:underline mr-4"
                 >
                     Edit Project
                 </Link>
@@ -133,11 +159,17 @@ export default function Show({
                 noPadding={true}
                 noBg={true}
                 noShadow={true}
-                className="grid grid-cols-2"
+                className="flex flex-row justify-between items-center"
             >
                 <h2 className="text-xl font-bold text-gray-900 dark:text-neutral-100 -mb-4 px-4">
                     Tasks:
                 </h2>
+                <button
+                    className="bg-blue-500 text-white px-4 py-2 rounded-md mr-4"
+                    onClick={handleTaskCreate}
+                >
+                    Create Task
+                </button>
             </PageSectionCard>
 
             <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-4 sm:px-0 text-sm">
@@ -265,6 +297,15 @@ export default function Show({
                                         className="bg-gray-300 text-black p-2 rounded-md"
                                     >
                                         Cancel
+                                    </button>
+                                    <button
+                                        type="button"
+                                        onClick={() =>
+                                            handleTaskDelete(task.id)
+                                        }
+                                        className="text-red-500"
+                                    >
+                                        Delete
                                     </button>
                                 </>
                             ) : (
