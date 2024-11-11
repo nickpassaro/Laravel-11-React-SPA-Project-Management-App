@@ -53,9 +53,17 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Task $task)
     {
-        //
+        Task::create([
+            'description' => request('description', 'No description'),
+            'due_date' => request('due_date', now()->addWeek()),
+            'status' => 'Pending',
+            'priority' => 'Low',
+            'created_by' => auth()->id(),
+            'updated_by' => auth()->id(),
+            'project_id' => request('project_id'),
+        ]);
     }
 
     /**
@@ -79,12 +87,20 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        $task->update($request->validate([
+        $request = request()->validate([
+            'description' => 'nullable',
             'due_date' => 'nullable',
             'status' => 'nullable',
             'priority' => 'nullable',
-            'updated_by' => 'required',
-        ]));
+        ]);
+
+        $task->update([
+            'description' => $request['description'],
+            'due_date' => $request['due_date'],
+            'status' => $request['status'],
+            'priority' => $request['priority'],
+            'updated_by' => auth()->id(),
+        ]);
     }
 
     /**

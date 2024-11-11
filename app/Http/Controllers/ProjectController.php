@@ -85,8 +85,7 @@ class ProjectController extends Controller
 
         return inertia('Projects/Show', [
             'project' => $project,
-            'tasks' => $project->tasks,
-            'curr_user_id' => auth()->id(),
+            'tasks' => $project->tasks()->with(['createdBy', 'updatedBy', 'assignedTo'])->orderBy('id', 'desc')->get(),
         ]);
     }
 
@@ -95,7 +94,9 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        // Editing happens inline on the show page, so we don't need the edit method.
+        return inertia('Projects/Edit', [
+            'project' => $project,
+        ]);
     }
 
     /**
@@ -103,13 +104,20 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        $project->update($request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'due_date' => 'required',
-            'status' => 'required',
-            'updated_by' => 'required',
-        ]));
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'due_date' => 'required|date',
+            'status' => 'required|string',
+        ]);
+
+        $project->update([
+            'name' => $request['name'],
+            'description' => $request['description'],
+            'due_date' => $request['due_date'],
+            'status' => $request['status'],
+            'updated_by' => auth()->id(),
+        ]);
 
         $project->load([
             'createdBy',

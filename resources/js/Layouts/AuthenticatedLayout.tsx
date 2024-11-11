@@ -1,7 +1,6 @@
 import AuthNavBar from "@/Components/AuthNavBar";
 import { PropsWithChildren, ReactNode } from "react";
 import NewPostButton from "@/Components/NewPostButton";
-import SavePostButton from "@/Components/SavePostButton";
 
 export default function Authenticated({
     header,
@@ -22,9 +21,6 @@ export default function Authenticated({
                             <NewPostButton
                                 currentUrl={route().current() || ""}
                             />
-                        )}
-                        {route().current()?.includes("create") && (
-                            <SavePostButton />
                         )}
                     </div>
                 </header>
